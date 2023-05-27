@@ -85,13 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
         option.textContent = movies.title;
         movieFilter.appendChild(option);
       });
-
-    genderFilter.addEventListener('change', function() {
-        const selectedGender = genderFilter.value;
-        const filteredMovies = filterByGender(movies, selectedGender);
-        showCharacter(filteredMovies);
-        console.log(filteredMovies);
-      });
     } 
     catch (error) {
       console.log('Ocorreu um erro ao carregar os personagens:', error);
@@ -106,8 +99,14 @@ document.addEventListener('DOMContentLoaded', function() {
           const filteredCharacter = filterCharactersByMovie(movies, selectedMovie);
           showCharacter(filteredCharacter);
           console.log(filteredCharacter);
-        })
-      }
+        });
+        genderFilter.addEventListener('change', function() {
+          const selectedGender = genderFilter.value;
+          const filteredGender = filterByGender(movies, selectedGender);
+          showCharacter(filteredGender);
+          console.log(filteredGender);
+        });
+      
       sortAZButton.addEventListener('click', function() {
         const sortedAZ = sortAZButton.value;
         const sortedMovies = sortByTitleAZ(movies, sortedAZ);
@@ -132,7 +131,7 @@ sortRottenTomatoesButton.addEventListener('click', function() {
   showMovies(sortedMovies);
   console.log(sortedMovies);
 });
-      
+}     
 
   function showMovies(movies) {
     const moviesContainer = document.getElementById('cards-container');
@@ -214,4 +213,5 @@ function createCharacterCard(charac) {
   // Adicione qualquer lógica adicional para interatividade, como o efeito de flip do card
 
   return card;
-}})
+}
+})
