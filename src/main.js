@@ -60,6 +60,46 @@ document.addEventListener('DOMContentLoaded', function () {
     showMovies(filteredMovies);
     console.log(filteredMovies);
   });
+  
+  function showMovies(movies) {
+    const moviesContainer = document.getElementById('cards-container');
+    moviesContainer.innerHTML = ''; // Limpa o conteúdo atual
+
+    movies.forEach(movie => {
+      const movieCard = createMovieCard(movie);
+      moviesContainer.appendChild(movieCard);
+    });
+  }
+
+  function createMovieCard(movie) {
+    const card = document.createElement('div');
+    card.classList.add('movie-card');
+
+    // Frente do card
+    const front = document.createElement('div');
+    front.classList.add('card-front');
+    front.innerHTML = `
+    <img src="${movie.poster}" alt="${movie.title}" />
+    <h3>${movie.title}</h3>
+    <h4>Ano de Lançamento: ${movie.release_date}</h4>
+  `;
+
+    // Verso do card
+    const back = document.createElement('div');
+    back.classList.add('card-back');
+    back.innerHTML = `
+    <h3>${movie.description}</h3>
+    <h4>Diretor: ${movie.director}</h4>
+    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
+  `;
+
+    card.appendChild(front);
+    card.appendChild(back);
+
+    // Adicione qualquer lógica adicional para interatividade, como o efeito de flip do card
+
+    return card;
+  }
 
 
   loadDirectors();
