@@ -221,5 +221,5 @@ document.addEventListener('DOMContentLoaded', function () {
     card.appendChild(back);
     return card;
   }
+}
 })
-
