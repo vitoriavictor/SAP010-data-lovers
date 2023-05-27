@@ -51,6 +51,7 @@ export function filterCharactersByMovie(movies, title) {
       .map(movie => movie.people)
       .flat();
   }
+}
   export function filterByGender(movies, selectedGender) {
     const filteredPeople = [];
     if (selectedGender === "all") {
