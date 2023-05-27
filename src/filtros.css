@@ -328,53 +328,8 @@ h1, h2, h3 {
   justify-content: center;
 }
 
-#hmiyazaki, #takahata, #kondo, #gmiyazaki, #morita, #yonebayashi {
-  width: 100%;
-  margin: .5rem;
-  border-radius: 2rem;
-  background-color: #ffffff;
-  color: #1ba0d0;
-  text-align: center;
-  padding: 1rem;
-  position: relative;
-  align-items: center;
-  min-height: 150px; /* altura mínima para os cards */
-}
-
-#hmiyazaki a, #takahata a, #kondo a, #gmiyazaki a, #morita a, #yonebayashi a {
-  color: #1ba0d0;
+#a-z, #ano, #nota {
   border: #1ba0d0 solid;
-  padding: 5px;
-  border-radius: 2rem;
-  align-items: center;
-} 
-
-#hmiyazaki img, #takahata img, #kondo img, #gmiyazaki img, #morita img, #yonebayashi img {
-  width: 100%;
-  border-radius: 2rem;
-}
-
-/* Media queries para ajustar DIRETORES */
-
-@media (min-width: 768px) {
-  #hmiyazaki, #takahata, #kondo, #gmiyazaki, #morita, #yonebayashi  {
-    flex: 0 0 calc(25% - 2rem);
-    max-width: calc(25% - 2rem);
-		margin: 2rem;
-  }
-}
-
-@media (max-width: 767px) {
-  #hmiyazaki, #takahata, #kondo, #gmiyazaki, #morita, #yonebayashi {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
-
-/* O ESTÚDIO */
-
-#studio-content{
-	background-color: #1ba0d0df;
-	padding: 2rem;
-	color: #ffffff;
+  color: #ffffff;
+  padding: 1rem;
 }
