@@ -87,6 +87,16 @@ document.addEventListener('DOMContentLoaded', function () {
         movieFilter.appendChild(option);
       });
     } 
+
+      genderFilter.addEventListener('change', function () {
+
+        const selectedGender = genderFilter.value;
+        const filteredMovies = filterByGender(movies, selectedGender);
+        showCharacter(filteredMovies);
+        console.log(filteredMovies);
+      });
+    }
+
     catch (error) {
       console.log('Ocorreu um erro ao carregar os personagens:', error);
     }

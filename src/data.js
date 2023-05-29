@@ -1,3 +1,4 @@
+
 const data = {
   getMovies: async function () {
     try {
