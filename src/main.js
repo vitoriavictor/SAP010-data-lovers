@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
         option.textContent = movies.title;
         movieFilter.appendChild(option);
       });
+    } 
 
       genderFilter.addEventListener('change', function () {
 
