@@ -163,34 +163,43 @@ document.addEventListener('DOMContentLoaded', function () {
     return card;
   }
   loadDirectors();
-});
+  loadMovies();
 
-loadMovies();
 
-async function loadMovies() {
-  try {
-    const movies = await data.getMovies();
-    const movieFilter = document.getElementById("movieFilter");
-    while (movieFilter.firstChild) {
-      movieFilter.removeChild(movieFilter.firstChild);
+  async function loadMovies() {
+    try {
+      const movies = await data.getMovies();
+      const movieFilter = document.getElementById("movieFilter");
+      while (movieFilter.firstChild) {
+        movieFilter.removeChild(movieFilter.firstChild);
+      }
+
+      // Adicionar opções
+      const allOption = document.createElement("option");
+      allOption.value = "all";
+      allOption.textContent = "Todos";
+      movieFilter.appendChild(allOption);
+
+      movies.forEach(function (movies) {
+        const option = document.createElement("option");
+        option.value = movies.title;
+        option.textContent = movies.title;
+        movieFilter.appendChild(option);
+      });
+    } 
+
+      genderFilter.addEventListener('change', function () {
+
+        const selectedGender = genderFilter.value;
+        const filteredMovies = filterByGender(movies, selectedGender);
+        showCharacter(filteredMovies);
+        console.log(filteredMovies);
+      });
     }
-
-    // Adicionar opções
-    const allOption = document.createElement("option");
-    allOption.value = "all";
-    allOption.textContent = "Todos";
-    movieFilter.appendChild(allOption);
-
-    movies.forEach(function (movie) {
-      const option = document.createElement("option");
-      option.value = movie.title;
-      option.textContent = movie.title;
-      movieFilter.appendChild(option);
-    });
-  } catch (error) {
-    console.log('Ocorreu um erro ao carregar os filmes:', error);
+    catch (error) {
+      console.log('Ocorreu um erro ao carregar os personagens:', error);
+    }
   }
-}
 
 // Função principal
 window.onload = function () {
