@@ -96,21 +96,26 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(filteredMovies);
       });
     }
+
     catch (error) {
       console.log('Ocorreu um erro ao carregar os personagens:', error);
     }
   }
-
   window.addEventListener('DOMContentLoaded', loadMovies); {
     const movieFilter = document.getElementById('movieFilter');
 
-    movieFilter.addEventListener('change', function () {
-      const selectedMovie = movieFilter.value;
-      const filteredCharacter = filterCharactersByMovie(movies, selectedMovie);
-      showCharacter(filteredCharacter);
-      console.log(filteredCharacter);
-    })
-  }
+  movieFilter.addEventListener('change', function () {
+     const selectedMovie = movieFilter.value;
+     const filteredCharacter = filterCharactersByMovie(movies, selectedMovie);
+     showCharacter(filteredCharacter);
+     console.log(filteredCharacter);
+   });
+  genderFilter.addEventListener('change', function () {
+     const selectedGender = genderFilter.value;
+     const filteredMovies = filterByGender(movies, selectedGender);
+     showCharacter(filteredMovies);
+     console.log(filteredMovies);
+  });
   sortAZButton.addEventListener('click', function () {
     const sortedAZ = sortAZButton.value;
     const sortedMovies = sortByTitleAZ(movies, sortedAZ);
@@ -224,9 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     card.appendChild(front);
     card.appendChild(back);
-
-    // Adicione qualquer lógica adicional para interatividade, como o efeito de flip do card
-
     return card;
   }
+}
 })
