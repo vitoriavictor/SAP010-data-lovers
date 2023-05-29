@@ -105,16 +105,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const movieFilter = document.getElementById('movieFilter');
 
   movieFilter.addEventListener('change', function () {
-     const selectedMovie = movieFilter.value;
-     const filteredCharacter = filterCharactersByMovie(movies, selectedMovie);
-     showCharacter(filteredCharacter);
-     console.log(filteredCharacter);
-   });
+    const selectedMovie = movieFilter.value;
+    const filteredCharacter = filterCharactersByMovie(movies, selectedMovie);
+    showCharacter(filteredCharacter);
+    console.log(filteredCharacter);
+  });
   genderFilter.addEventListener('change', function () {
-     const selectedGender = genderFilter.value;
-     const filteredMovies = filterByGender(movies, selectedGender);
-     showCharacter(filteredMovies);
-     console.log(filteredMovies);
+    const selectedGender = genderFilter.value;
+    const filteredMovies = filterByGender(movies, selectedGender);
+    showCharacter(filteredMovies);
+    console.log(filteredMovies);
   });
   sortAZButton.addEventListener('click', function () {
     const sortedAZ = sortAZButton.value;
@@ -231,5 +231,4 @@ document.addEventListener('DOMContentLoaded', function () {
     card.appendChild(back);
     return card;
   }
-}
 })
