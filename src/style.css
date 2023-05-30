@@ -2,29 +2,31 @@
 
 *{
 	font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 body {
 	position: relative;
+  height: 100vh;
+  overflow: auto;
 }
-
-body::before {
-	content: "";
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-image: url(img/backgroung_ghibli.png);
-	background-attachment: fixed;
-	background-size: 100%;
-	background-repeat: repeat-y;
-	background-color: #1ba0d0;
-	opacity: 0.7;
-	z-index: -1;
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('img/backgroung_ghibli.png');
+  background-size: cover;
+  background-color: #1ba0d0;
+  opacity: 0.7;
+  z-index: -1;
 }
 
 #home {
   width: 100%;
-	min-height: 100%; /* Define a altura da seção para ocupar toda a janela */
+	min-height: 100%;
   background-attachment: fixed;
   background-size: cover;
   background-color: #1ba0d0;
@@ -35,7 +37,7 @@ body::before {
 }
 
 #home img {
-  max-width: 250px; /* Limite a largura da imagem */
+  max-width: 250px;
   height: auto;
   align-items: center;
 }
@@ -43,17 +45,55 @@ body::before {
 footer {
   position: relative;
   bottom: 0;
-  padding: 1rem;
   left: 0;
   width: 100%;
   background-color: #1ba0d0;
   text-align: center;
   font-size: 1rem;
   color: #ffffff;
+  padding: 20px;
+}
+
+footer h2 {
+  margin-left: 20px;
+  text-align: left;
+}
+
+footer h3 {
+  margin-top: 10px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+footer h4 {
+  text-align: center;
+  margin-bottom: 2px;
+  display: inline-block;
+  justify-content: space-between;
+}
+
+footer a {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+#perfil {
+  display: block;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .background-image {
+    background-position: center;
+  }
 }
 
 #content {
   padding: 3rem;
+  text-align: center;
 }
 
 .content-home {
@@ -270,7 +310,7 @@ h1, h2, h3 {
 
 .front, .back {
   width: 100%;
-  height: 100%;
+  height: 90%;
   position: absolute;
   top: 0;
   left: 0;
@@ -329,8 +369,13 @@ h1, h2, h3 {
 }
 
 #hmiyazaki, #takahata, #kondo, #gmiyazaki, #morita, #yonebayashi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Espaçamento entre os elementos */
   width: 100%;
-  margin: .5rem;
+  margin: 3rem;
+  margin-top: 10px;
   border-radius: 2rem;
   background-color: #ffffff;
   color: #1ba0d0;
@@ -377,4 +422,21 @@ h1, h2, h3 {
 	background-color: #1ba0d0df;
 	padding: 2rem;
 	color: #ffffff;
+}
+
+#see-more {
+  color: #ffffff;
+  border: #ffffff solid;
+  padding: 5px;
+  border-radius: 2rem;
+  align-items: center;
+  text-align: center;
+} 
+
+#recomend{
+  background-color: #1ba0d0df;
+	padding: 2rem;
+	color: #ffffff;
+  display: flex;
+  justify-content: space-between;
 }
