@@ -285,7 +285,7 @@ window.onload = function () {
     back.innerHTML = `
       <h3>${movie.description}</h3>
       <h4>Diretor: ${movie.director}</h4>
-      <h4>Rotten Tomatoes: ${movie.rotten_tomatoes}%</h4>
+      <h4>Rotten Tomatoes: ${movie.rt_score}%</h4>
     `;
 
     card.appendChild(front);
