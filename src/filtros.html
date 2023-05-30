@@ -8,11 +8,13 @@
   <link rel="icon" type="image/png" href="img/icons8-totoro-48.ico" />
   <title>Studio Ghibli</title>
   <link rel="stylesheet" href="filtros.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <div class="background-image"></div>
   <header id="header">
-    <a href="index.html"><img class="logo-icon" src="img/totoro.gif"></a>
+    <a href="index.html"><img class="logo-icon" src="img/totoro.gif" alt="Studio Ghibli"></a>
     <h1>Filtros de Busca</h1>
     <nav id="nav">
       <button aria-label="Abrir Menu" id="btn-mobile" aria-haspopup="true" aria-controls="menu"
@@ -28,28 +30,32 @@
       </ul>
     </nav>
   </header>
-  <main id="">
+  <main id="main">
     <div class="container">
       <div id="filters">
-        <label for="search" data-filter="films" id="search-label">Pesquisar:</label>
-        <input type="text" id="search"></input>
-        <button id="searchButton">Ok</button>
+        <section id="searchFilm">
+          <label for="search" data-filter="films" id="search-label">Pesquise o nome do filme:</label>
+          <input type="text" id="search">
+          <button id="searchButton">Buscar</button>
+        </section>
         <!-- Filtro de diretor -->
-        <label for="director-filter" data-filter="director" id="director-label">Diretor:</label>
-        <select id="director-filter"></select>
-
+        <section id="filmDirectorCharac">
+          <label for="director-filter" data-filter="director" id="director-label">Diretor:</label>
+          <select id="director-filter"></select>
         <!-- Filtro de filme -->
-        <label for="movieFilter" data-filter="movie" id="movie-label">Personagens por Filme:</label>
-        <select id="movieFilter"></select>
-
+          <label for="movieFilter" data-filter="movie" id="movie-label">Personagens por Filme:</label>
+          <select id="movieFilter"></select>
+        </section>
         <!-- Filtro de gênero -->
-        <label for="genderFilter" data-filter="gender" id="gender-filter">Gênero:</label>
-        <select id="genderFilter">
-          <option value="all">Todos</option>
-          <option value="male">Masculino</option>
-          <option value="female">Feminino</option>
-          <!-- Outros gêneros... -->
-        </select>
+        <section id="genderCharac">
+          <label for="genderFilter" data-filter="gender" id="gender-filter">Gênero:</label>
+          <select id="genderFilter">
+            <option value="all">Todos</option>
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+            <!-- Outros gêneros... -->
+          </select>
+        </section>
         <section id="a-z">
           <h4>Ordenação dos filmes</h4>
           <!-- Ordenação de A-Z -->
@@ -62,31 +68,47 @@
         <section id="ano">
           <h4>Ordenação dos filmes por Ano de Lançamento</h4>
           <!-- Ordenação por ano de lançamento -->
-          <label for="sortReleaseYearButtonOld" id="sort-release-year-label">Mais antigos</label>
+          <label for="sortReleaseYearButtonOld" id="sortRYlabelO">Mais antigos</label>
           <input type="radio" name="sort" id="sortReleaseYearButtonOld">
 
           <!-- falta incluir -->
-          <label for="sortReleaseYearButtonNew" id="sort-release-year-label">Mais novos</label>
+          <label for="sortReleaseYearButtonNew" id="sortRYlabelN">Mais novos</label>
           <input type="radio" name="sort" id="sortReleaseYearButtonNew">
         </section>
 
         <section id="nota">
           <h4>Ordenação dos filmes por nota no Rotten Tomatoes</h4>
           <!-- Ordenação por nota do Rotten Tomatoes -->
-          <label for="sortRottenTomatoesButtonHigh" id="sort-rotten-tomatoes-label">Maior Nota</label>
+          <label for="sortRottenTomatoesButtonHigh" id="sortRTlabelH">Maior Nota</label>
           <input type="radio" name="sort" id="sortRottenTomatoesButtonHigh">
           <!-- falta incluir -->
-          <label for="sortRottenTomatoesButtonLow" id="sort-rotten-tomatoes-label">Menor Nota</label>
+          <label for="sortRottenTomatoesButtonLow" id="sortRTlabelL">Menor Nota</label>
           <input type="radio" name="sort" id="sortRottenTomatoesButtonLow">
         </section>
 
         <!-- Calcular estatísticas -->
-        <button id="calculateStatsButton">Calcular Estatísticas</button>
-
+        <section id="statistics">
+          <label for="" id="">Percentual de personagens femininas/masculinas:</label>
+          <div id="resultContainer"></div>
+          <button id="calculateStatsButton">Calcular Estatísticas</button> 
+        </section>
+        <!-- Limpar filtros  -->
+        <section id="clean">
+          <button id="cleanFilters">Limpar Filtros</button>
+        </section>
         <div id="cards-container"></div>
       </div>
+    </div>
   </main>
-  <footer id="">Desenvolvido por Vitória Victor e Marina Cordeiro</footer>
+  <footer>
+    <h2>Projeto Data-Lovers</h2>
+    <a href="https://www.laboratoria.la/br"><h3>Bootcamp Laboratória</h3></a>
+    <h4>Desenvolvido por</h4> 
+    <a id="perfil" href="https://github.com/vitoriavictor">Vitória Victor</a>
+    <p>e</p>
+    <a id="perfil" href="https://github.com/Marinacb7">Marina Cordeiro</a>
+  </footer>
+  <script src="menu.js" type="module"></script>
   <script src="main.js" type="module"></script>
   <script src="data.js" type="module"></script>
 </body>

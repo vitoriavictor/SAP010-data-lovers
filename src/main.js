@@ -1,29 +1,78 @@
 import { data } from "./data.js";
-import { filterByDirector, filterByGender, filterCharactersByMovie, sortByTitleAZ, sortByTitleZA, sortByReleaseYearOld, sortByReleaseYearNew, sortByRottenTomatoesHigh, sortByRottenTomatoesLow, calculateGenderStats } from './data.js';
-import { movies } from './data.js';
+import { filterItemsBySearchTerm, filterByDirector, filterByGender, filterCharactersByMovie, sortByTitleAZ, sortByTitleZA, sortByReleaseYearOld, sortByReleaseYearNew, sortByRottenTomatoesHigh, sortByRottenTomatoesLow } from './data.js';
+import { movies } from './data.js'; 
 
-// MENU HAMBURGUER
+// FILTROS
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('search');
+  const searchButton = document.getElementById('searchButton');
+  /*  const calculateStatsButton = document.getElementById('calculateStatsButton');
+  const resultContainer = document.getElementById('resultContainer'); */
 
+  searchButton.addEventListener('click', function () {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    const filteredItems = filterItemsBySearchTerm(data, searchTerm);
+    showMovies(filteredItems);
+    console.log(filteredItems);
+  });
 
-const btnMobile = document.getElementById('btn-mobile');
+  /* calculateStatsButton.addEventListener('click', function () {
+    const genderStats = calculateGenderStats(movies);
+    const resultDiv = document.createElement('div');
+    resultDiv.textContent = `Estatísticas de Gênero:
+      Total: ${genderStats.totalCharacters}
+      Masculino: ${genderStats.maleCharacters}
+      Feminino: ${genderStats.femaleCharacters}
+      Percentagem personagens femininos: ${genderStats.femalePercentage}
+      Percentagem personagens masculinos: ${genderStats.malePercentage}
+    `;
+    resultContainer.innerHTML = ''; // Limpa o conteúdo atual
+    resultContainer.appendChild(resultDiv);
+    console.log(genderStats);
+  }); */
+  
 
-function toggleMenu(event) {
-  if (event.type === 'touchstart') event.preventDefault();
-  const nav = document.getElementById('nav');
-  nav.classList.toggle('active');
-  const active = nav.classList.contains('active');
-  event.currentTarget.setAttribute('aria-expanded', active);
-  if (active) {
-    event.currentTarget.setAttribute('aria-label', 'Fechar Menu');
-  } else {
-    event.currentTarget.setAttribute('aria-label', 'Abrir Menu');
+  function showMovies(movies) {
+    const moviesContainer = document.getElementById('cards-container');
+    moviesContainer.innerHTML = ''; // Limpa o conteúdo atual
+
+    movies.forEach(movie => {
+      const movieCard = createMovieCard(movie);
+      moviesContainer.appendChild(movieCard);
+    });
   }
-}
 
-btnMobile.addEventListener('click', toggleMenu);
-btnMobile.addEventListener('touchstart', toggleMenu);
+  function createMovieCard(movie) {
+    const card = document.createElement('div');
+    card.classList.add('movie-card');
 
-//FILTROS
+    // Frente do card
+    const front = document.createElement('div');
+    front.classList.add('card-front');
+    front.innerHTML = `
+    <img src="${movie.poster}" alt="${movie.title}" />
+    <h3>${movie.title}</h3>
+    <h4>Ano de Lançamento: ${movie.release_date}</h4>
+    <h3>${movie.description}</h3>
+    <h4>Diretor: ${movie.director}</h4>
+    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
+  `;
+
+    // Verso do card
+/*     const back = document.createElement('div');
+    back.classList.add('card-back');
+    back.innerHTML = `
+    <h3>${movie.description}</h3>
+    <h4>Diretor: ${movie.director}</h4>
+    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
+  `; */
+
+    card.appendChild(front);
+/*     card.appendChild(back); */
+
+    return card;
+  }
+});
 
 async function loadDirectors() {
   try {
@@ -50,7 +99,6 @@ async function loadDirectors() {
   }
 }
 
-
 document.addEventListener('DOMContentLoaded', function () {
   const directorFilter = document.getElementById('director-filter');
 
@@ -59,98 +107,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const filteredMovies = filterByDirector(movies, selectedDirector);
     showMovies(filteredMovies);
     console.log(filteredMovies);
-  });
-
-
-  loadDirectors();
-  loadMovies();
-
-
-  async function loadMovies() {
-    try {
-      const movies = await data.getMovies();
-      const movieFilter = document.getElementById("movieFilter");
-      while (movieFilter.firstChild) {
-        movieFilter.removeChild(movieFilter.firstChild);
-      }
-
-      // Adicionar opções
-      const allOption = document.createElement("option");
-      allOption.value = "all";
-      allOption.textContent = "Todos";
-      movieFilter.appendChild(allOption);
-
-      movies.forEach(function (movies) {
-        const option = document.createElement("option");
-        option.value = movies.title;
-        option.textContent = movies.title;
-        movieFilter.appendChild(option);
-      });
-    } 
-
-      genderFilter.addEventListener('change', function () {
-
-        const selectedGender = genderFilter.value;
-        const filteredMovies = filterByGender(movies, selectedGender);
-        showCharacter(filteredMovies);
-        console.log(filteredMovies);
-      });
-    }
-
-    catch (error) {
-      console.log('Ocorreu um erro ao carregar os personagens:', error);
-    }
-  }
-  window.addEventListener('DOMContentLoaded', loadMovies); {
-    const movieFilter = document.getElementById('movieFilter');
-
-  movieFilter.addEventListener('change', function () {
-    const selectedMovie = movieFilter.value;
-    const filteredCharacter = filterCharactersByMovie(movies, selectedMovie);
-    showCharacter(filteredCharacter);
-    console.log(filteredCharacter);
-  });
-  genderFilter.addEventListener('change', function () {
-    const selectedGender = genderFilter.value;
-    const filteredMovies = filterByGender(movies, selectedGender);
-    showCharacter(filteredMovies);
-    console.log(filteredMovies);
-  });
-  sortAZButton.addEventListener('click', function () {
-    const sortedAZ = sortAZButton.value;
-    const sortedMovies = sortByTitleAZ(movies, sortedAZ);
-    showMovies(sortedMovies);
-    console.log(sortedMovies);
-  });
-  sortZAButton.addEventListener('click', function () {
-    const sortedZA = sortZAButton.value;
-    const sortedMovies = sortByTitleZA(movies, sortedZA);
-    showMovies(sortedMovies);
-    console.log(sortedMovies);
-  });
-  sortReleaseYearButtonOld.addEventListener('click', function () {
-    const sortedYear = sortReleaseYearButtonOld.value;
-    const sortedMovies = sortByReleaseYearOld(movies, sortedYear);
-    showMovies(sortedMovies);
-    console.log(sortedMovies);
-  });
-  sortReleaseYearButtonNew.addEventListener('click', function () {
-    const sortedYear = sortReleaseYearButtonNew.value;
-    const sortedMovies = sortByReleaseYearNew(movies, sortedYear);
-    showMovies(sortedMovies);
-    console.log(sortedMovies);
-  });
-  sortRottenTomatoesButtonHigh.addEventListener('click', function () {
-    const sortedRT = sortRottenTomatoesButtonHigh.value;
-    const sortedMovies = sortByRottenTomatoesHigh(movies, sortedRT);
-    showMovies(sortedMovies);
-    console.log(sortedMovies);
-  });
-  sortRottenTomatoesButtonLow.addEventListener('click', function () {
-    const sortedRT = sortRottenTomatoesButtonLow.value;
-    const sortedMovies = sortByRottenTomatoesLow(movies, sortedRT);
-    showMovies(sortedMovies);
-    console.log(sortedMovies);
   });
 
   function showMovies(movies) {
@@ -174,32 +130,167 @@ document.addEventListener('DOMContentLoaded', function () {
     <img src="${movie.poster}" alt="${movie.title}" />
     <h3>${movie.title}</h3>
     <h4>Ano de Lançamento: ${movie.release_date}</h4>
-  `;
-
-    // Verso do card
-    const back = document.createElement('div');
-    back.classList.add('card-back');
-    back.innerHTML = `
     <h3>${movie.description}</h3>
     <h4>Diretor: ${movie.director}</h4>
     <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
   `;
 
-    card.appendChild(front);
-    card.appendChild(back);
+    // Verso do card
+/*     const back = document.createElement('div');
+    back.classList.add('card-back');
+    back.innerHTML = `
+    <h3>${movie.description}</h3>
+    <h4>Diretor: ${movie.director}</h4>
+    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
+  `; */
 
-    // Adicione qualquer lógica adicional para interatividade, como o efeito de flip do card
+    card.appendChild(front);
+/*     card.appendChild(back); */
 
     return card;
   }
+  loadDirectors();
+});
 
+loadMovies();
 
+async function loadMovies() {
+  try {
+    const movies = await data.getMovies();
+    const movieFilter = document.getElementById("movieFilter");
+    while (movieFilter.firstChild) {
+      movieFilter.removeChild(movieFilter.firstChild);
+    }
+
+    // Adicionar opções
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = "Todos";
+    movieFilter.appendChild(allOption);
+
+    movies.forEach(function (movie) {
+      const option = document.createElement("option");
+      option.value = movie.title;
+      option.textContent = movie.title;
+      movieFilter.appendChild(option);
+    });
+  } catch (error) {
+    console.log('Ocorreu um erro ao carregar os filmes:', error);
+  }
+}
+
+// Função principal
+window.onload = function () {
+  const movieFilter = document.getElementById('movieFilter');
+  const genderFilter = document.getElementById('genderFilter');
+  const sortAZButton = document.getElementById('sortAZButton');
+  const sortZAButton = document.getElementById('sortZAButton');
+  const sortReleaseYearButtonOld = document.getElementById('sortReleaseYearButtonOld');
+  const sortReleaseYearButtonNew = document.getElementById('sortReleaseYearButtonNew');
+  const sortRottenTomatoesButtonHigh = document.getElementById('sortRottenTomatoesButtonHigh');
+  const sortRottenTomatoesButtonLow = document.getElementById('sortRottenTomatoesButtonLow');
+
+  movieFilter.addEventListener('change', function () {
+    const selectedMovie = movieFilter.value;
+    const filteredCharacter = filterCharactersByMovie(movies, selectedMovie);
+    showCharacter(filteredCharacter);
+    console.log(filteredCharacter);
+  });
+  
+  genderFilter.addEventListener('click', function () {
+    const selectedGender = genderFilter.value;
+    const filteredMovies = filterByGender(movies, selectedGender);
+    showCharacter(filteredMovies);
+    console.log(filteredMovies);
+  });
+
+  sortAZButton.addEventListener('click', function () {
+    const sortedAZ = sortAZButton.value;
+    const sortedMovies = sortByTitleAZ(movies, sortedAZ);
+    showMovies(sortedMovies);
+    console.log(sortedMovies);
+  });
+
+  sortZAButton.addEventListener('click', function () {
+    const sortedZA = sortZAButton.value;
+    const sortedMovies = sortByTitleZA(movies, sortedZA);
+    showMovies(sortedMovies);
+    console.log(sortedMovies);
+  });
+
+  sortReleaseYearButtonOld.addEventListener('click', function () {
+    const sortedYear = sortReleaseYearButtonOld.value;
+    const sortedMovies = sortByReleaseYearOld(movies, sortedYear);
+    showMovies(sortedMovies);
+    console.log(sortedMovies);
+  });
+
+  sortReleaseYearButtonNew.addEventListener('click', function () {
+    const sortedYear = sortReleaseYearButtonNew.value;
+    const sortedMovies = sortByReleaseYearNew(movies, sortedYear);
+    showMovies(sortedMovies);
+    console.log(sortedMovies);
+  });
+
+  sortRottenTomatoesButtonHigh.addEventListener('click', function () {
+    const sortedRT = sortRottenTomatoesButtonHigh.value;
+    const sortedMovies = sortByRottenTomatoesHigh(movies, sortedRT);
+    showMovies(sortedMovies);
+    console.log(sortedMovies);
+  });
+
+  sortRottenTomatoesButtonLow.addEventListener('click', function () {
+    const sortedRT = sortRottenTomatoesButtonLow.value;
+    const sortedMovies = sortByRottenTomatoesLow(movies, sortedRT);
+    showMovies(sortedMovies);
+    console.log(sortedMovies);
+  });
+
+  function showMovies(movies) {
+    const moviesContainer = document.getElementById('cards-container');
+    moviesContainer.innerHTML = ''; // Limpa o conteúdo atual
+
+    movies.forEach(movie => {
+      const movieCard = createMovieCard(movie);
+      moviesContainer.appendChild(movieCard);
+    });
+  }
+
+  function createMovieCard(movie) {
+    const card = document.createElement('div');
+    card.classList.add('movie-card');
+
+    const front = document.createElement('div');
+    front.classList.add('card-front');
+    front.innerHTML = `
+      <img src="${movie.poster}" alt="${movie.title}" />
+      <h3>${movie.title}</h3>
+      <h4>Ano de Lançamento: ${movie.release_date}</h4>
+      <h3>${movie.description}</h3>
+      <h4>Diretor: ${movie.director}</h4>
+      <h4>Rotten Tomatoes: ${movie.rt_score}%</h4>
+    `;
+
+/*     const back = document.createElement('div');
+    back.classList.add('card-back');
+    back.innerHTML = `
+      <h3>${movie.description}</h3>
+      <h4>Diretor: ${movie.director}</h4>
+      <h4>Rotten Tomatoes: ${movie.rt_score}%</h4>
+    `; */
+
+    card.appendChild(front);
+/*     card.appendChild(back); */
+
+    return card;
+  }
+ 
   function showCharacter(characters) {
     const characterContainer = document.getElementById('cards-container');
     characterContainer.innerHTML = ''; // Limpa o conteúdo atual
 
-    characters.forEach(charac => {
-      const characterCard = createCharacterCard(charac);
+    characters.forEach(character => {
+      const characterCard = createCharacterCard(character);
       characterContainer.appendChild(characterCard);
     });
   }
@@ -208,27 +299,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const card = document.createElement('div');
     card.classList.add('character-card');
 
-    // Frente do card
     const front = document.createElement('div');
     front.classList.add('card-front');
     front.innerHTML = `
     <img src="${charac.img}" alt="${charac.name}" />
     <h3>${charac.name}</h3>
     <h4>Idade: ${charac.age}</h4>
-  `;
-
-    // Verso do card
-    const back = document.createElement('div');
-    back.classList.add('card-back');
-    back.innerHTML = `
     <h4>Espécie: ${charac.specie}</h4>
     <h4>Gênero: ${charac.gender}</h4>
-    <h4>Cor dos Olhos: ${charac.eye_color}</h4>
-    <h4>Cor do Cabelo: ${charac.hair_color}</h4>
+    <h4>Cor dos olhos: ${charac.eye_color}</h4>
+    <h4>Cor dos cabelos: ${charac.hair_color}</h4>
   `;
 
+/*     const back = document.createElement('div');
+    back.classList.add('card-back');
+    back.innerHTML = `
+    <h4>Gênero: ${charac.gender}</h4>
+    <h4>Cor dos olhos: ${charac.eye_color}</h4>
+    <h4>Cor dos cabelos: ${charac.hair_color}</h4>
+  `; */
+
     card.appendChild(front);
-    card.appendChild(back);
+/*     card.appendChild(back); */
+
     return card;
   }
-})
+};
