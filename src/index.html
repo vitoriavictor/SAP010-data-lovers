@@ -7,10 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="img/icons8-totoro-48.ico" />
   <title>Studio Ghibli</title>
+  <link rel="stylesheet" href="filtros.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <div class="background-image"></div>
   <header id="header">
     <h1></h1>
     <nav id="nav">
@@ -31,25 +33,15 @@
       <a href="studio.html"><img src="img/totoro.gif" alt="Studio Ghibli" id="show-home"></a>
     </section>
   </main>
-  <footer>Desenvolvido por Vitória Victor e Marina Cordeiro</footer>
-  <script>
-    const btnMobile = document.getElementById('btn-mobile');
-    function toggleMenu(event) {
-      if (event.type === 'touchstart') event.preventDefault();
-      const nav = document.getElementById('nav');
-      nav.classList.toggle('active');
-      const active = nav.classList.contains('active');
-      event.currentTarget.setAttribute('aria-expanded', active);
-      if (active) {
-        event.currentTarget.setAttribute('aria-label', 'Fechar Menu');
-      } else {
-        event.currentTarget.setAttribute('aria-label', 'Abrir Menu');
-      }
-    }
-
-    btnMobile.addEventListener('click', toggleMenu);
-    btnMobile.addEventListener('touchstart', toggleMenu); 
-  </script>
+  <footer>
+    <h2>Projeto Data-Lovers</h2>
+    <a href="https://www.laboratoria.la/br"><h3>Bootcamp Laboratória</h3></a>
+    <h4>Desenvolvido por</h4> 
+    <a id="perfil" href="https://github.com/vitoriavictor">Vitória Victor</a>
+    <p>e</p>
+    <a id="perfil" href="https://github.com/Marinacb7">Marina Cordeiro</a>
+  </footer>
+  <script src="menu.js" type="module"></script>
 </body>
 
 </html>
