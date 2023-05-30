@@ -1,4 +1,3 @@
-//import { data } from "./data.js";
 // MENU HAMBURGUER
 
 const btnMobile = document.getElementById('btn-mobile');
@@ -78,9 +77,9 @@ function createMovieCard(films) {
 
 // Carregar dados de um arquivo JSON
 fetch('./data/ghibli/ghibli.json')
-  .then(ghibli => ghibli.json())
+  .then(response => response.json())
   .then(data => {
-    for(let i = 0; i < data.films.length; i++ ){
+    for (let i = 0; i < data.films.length; i++) {
       const filme = data.films[i];
       console.log(filme);
       createMovieCard(filme);
