@@ -72,19 +72,22 @@ document.addEventListener('DOMContentLoaded', function () {
     <img src="${movie.poster}" alt="${movie.title}" />
     <h3>${movie.title}</h3>
     <h4>Ano de Lançamento: ${movie.release_date}</h4>
-  `;
-
-    // Verso do card
-    const back = document.createElement('div');
-    back.classList.add('card-back');
-    back.innerHTML = `
     <h3>${movie.description}</h3>
     <h4>Diretor: ${movie.director}</h4>
     <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
   `;
 
+    // Verso do card
+/*     const back = document.createElement('div');
+    back.classList.add('card-back');
+    back.innerHTML = `
+    <h3>${movie.description}</h3>
+    <h4>Diretor: ${movie.director}</h4>
+    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
+  `; */
+
     card.appendChild(front);
-    card.appendChild(back);
+/*     card.appendChild(back); */
 
     return card;
   }
@@ -146,60 +149,54 @@ document.addEventListener('DOMContentLoaded', function () {
     <img src="${movie.poster}" alt="${movie.title}" />
     <h3>${movie.title}</h3>
     <h4>Ano de Lançamento: ${movie.release_date}</h4>
-  `;
-
-    // Verso do card
-    const back = document.createElement('div');
-    back.classList.add('card-back');
-    back.innerHTML = `
     <h3>${movie.description}</h3>
     <h4>Diretor: ${movie.director}</h4>
     <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
   `;
 
+    // Verso do card
+/*     const back = document.createElement('div');
+    back.classList.add('card-back');
+    back.innerHTML = `
+    <h3>${movie.description}</h3>
+    <h4>Diretor: ${movie.director}</h4>
+    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
+  `; */
+
     card.appendChild(front);
-    card.appendChild(back);
+/*     card.appendChild(back); */
 
     return card;
   }
   loadDirectors();
-  loadMovies();
+});
 
+loadMovies();
 
-  async function loadMovies() {
-    try {
-      const movies = await data.getMovies();
-      const movieFilter = document.getElementById("movieFilter");
-      while (movieFilter.firstChild) {
-        movieFilter.removeChild(movieFilter.firstChild);
-      }
-
-      // Adicionar opções
-      const allOption = document.createElement("option");
-      allOption.value = "all";
-      allOption.textContent = "Todos";
-      movieFilter.appendChild(allOption);
-
-      movies.forEach(function (movies) {
-        const option = document.createElement("option");
-        option.value = movies.title;
-        option.textContent = movies.title;
-        movieFilter.appendChild(option);
-      });
-    } 
-
-      genderFilter.addEventListener('change', function () {
-
-        const selectedGender = genderFilter.value;
-        const filteredMovies = filterByGender(movies, selectedGender);
-        showCharacter(filteredMovies);
-        console.log(filteredMovies);
-      });
+async function loadMovies() {
+  try {
+    const movies = await data.getMovies();
+    const movieFilter = document.getElementById("movieFilter");
+    while (movieFilter.firstChild) {
+      movieFilter.removeChild(movieFilter.firstChild);
     }
-    catch (error) {
-      console.log('Ocorreu um erro ao carregar os personagens:', error);
-    }
+
+    // Adicionar opções
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = "Todos";
+    movieFilter.appendChild(allOption);
+
+    movies.forEach(function (movie) {
+      const option = document.createElement("option");
+      option.value = movie.title;
+      option.textContent = movie.title;
+      movieFilter.appendChild(option);
+    });
+  } catch (error) {
+    console.log('Ocorreu um erro ao carregar os filmes:', error);
   }
+}
 
 // Função principal
 window.onload = function () {
@@ -287,18 +284,21 @@ window.onload = function () {
       <img src="${movie.poster}" alt="${movie.title}" />
       <h3>${movie.title}</h3>
       <h4>Ano de Lançamento: ${movie.release_date}</h4>
-    `;
-
-    const back = document.createElement('div');
-    back.classList.add('card-back');
-    back.innerHTML = `
       <h3>${movie.description}</h3>
       <h4>Diretor: ${movie.director}</h4>
       <h4>Rotten Tomatoes: ${movie.rt_score}%</h4>
     `;
 
+/*     const back = document.createElement('div');
+    back.classList.add('card-back');
+    back.innerHTML = `
+      <h3>${movie.description}</h3>
+      <h4>Diretor: ${movie.director}</h4>
+      <h4>Rotten Tomatoes: ${movie.rt_score}%</h4>
+    `; */
+
     card.appendChild(front);
-    card.appendChild(back);
+/*     card.appendChild(back); */
 
     return card;
   }
@@ -324,18 +324,21 @@ window.onload = function () {
     <h3>${charac.name}</h3>
     <h4>Idade: ${charac.age}</h4>
     <h4>Espécie: ${charac.specie}</h4>
-  `;
-
-    const back = document.createElement('div');
-    back.classList.add('card-back');
-    back.innerHTML = `
     <h4>Gênero: ${charac.gender}</h4>
     <h4>Cor dos olhos: ${charac.eye_color}</h4>
     <h4>Cor dos cabelos: ${charac.hair_color}</h4>
   `;
 
+/*     const back = document.createElement('div');
+    back.classList.add('card-back');
+    back.innerHTML = `
+    <h4>Gênero: ${charac.gender}</h4>
+    <h4>Cor dos olhos: ${charac.eye_color}</h4>
+    <h4>Cor dos cabelos: ${charac.hair_color}</h4>
+  `; */
+
     card.appendChild(front);
-    card.appendChild(back);
+/*     card.appendChild(back); */
 
     return card;
   }
