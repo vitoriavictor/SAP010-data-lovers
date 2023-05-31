@@ -1,4 +1,3 @@
-
 const data = {
   getMovies: async function () {
     try {
@@ -25,12 +24,13 @@ const data = {
   }
 };
 
-export function filterItemsBySearchTerm(item, searchTerm) {
+export function filterItemsBySearchTerm(movies, searchTerm) {
   return movies.filter(item => {
     const lowerCaseTitle = item.title.toLowerCase();
     return lowerCaseTitle.includes(searchTerm);
   });
 }
+
 export function filterByDirector(movies, director) {
   if (director === "all") {
     return movies;
@@ -116,10 +116,10 @@ if (typeof fetch !== 'undefined') {
     })
     .catch(error => {
       console.error('Error fetching data:', error);
-    });
-} else {
+    });  
+} /* else {
   console.error('Fetch is not available. Data cannot be fetched.');
-}
+} */
 
 export { data };
 export { movies };

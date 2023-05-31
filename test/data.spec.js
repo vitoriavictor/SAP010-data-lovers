@@ -1,4 +1,44 @@
-import { filterItemsBySearchTerm, filterByDirector, filterCharactersByMovie, filterByGender, sortByTitleAZ, sortByTitleZA, sortByReleaseYearOld, sortByReleaseYearNew, sortByRottenTomatoesHigh, sortByRottenTomatoesLow } from '../src/data.js';
+import { getMovies, getDirectors, filterItemsBySearchTerm, filterByDirector, filterCharactersByMovie, filterByGender, sortByTitleAZ, sortByTitleZA, sortByReleaseYearOld, sortByReleaseYearNew, sortByRottenTomatoesHigh, sortByRottenTomatoesLow } from '../src/data.js';
+import fetchMock from 'jest-fetch-mock';
+
+beforeEach(() => {
+  fetchMock.resetMocks();
+});
+
+describe('getMovies', () => {
+  it('deve retornar uma lista de filmes', async () => {
+    expect.assertions(1);
+    const result = await getMovies();
+    expect(result).toEqual(expect.any(Array));
+  });
+  
+
+  it('deve retornar uma lista vazia em caso de erro', async () => {
+    expect.assertions(1);
+    try {
+      await getMovies();
+    } catch (error) {
+      expect(error).toEqual([]);
+    }
+  });
+});
+
+describe('getDirectors', () => {
+  it('deve retornar uma lista de diretores únicos', () => {
+    expect.assertions(1);
+    return getDirectors().then(result => {
+      const expected = ['Director 1', 'Director 2', 'Director 3'];
+      expect(result).toEqual(expected);
+    });
+  });
+
+  it('deve retornar uma lista vazia em caso de erro', () => {
+    expect.assertions(1);
+    return getDirectors().catch(error => {
+      expect(error).toEqual([]);
+    });
+  });
+});
 
 describe('filterItemsBySearchTerm', () => {
   const movies = [
@@ -289,8 +329,8 @@ describe('sortByRottenTomatoesHigh', () => {
     expect(sortedMovies).toEqual([
       { title: 'Movie 4', rt_score: 95 },
       { title: 'Movie 1', rt_score: 90 },
-      { title: 'Movie 3', rt_score: 82 },
       { title: 'Movie 5', rt_score: 87 },
+      { title: 'Movie 3', rt_score: 82 },
       { title: 'Movie 2', rt_score: 75 }
     ]);
   });
