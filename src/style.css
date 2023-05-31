@@ -79,7 +79,7 @@ footer a {
   text-align: center;
 }
 
-#perfil {
+#perfilV, #perfilM {
   display: block;
   justify-content: space-between;
   text-align: center;
