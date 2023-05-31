@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
   `;
 
     // Verso do card
-/*     const back = document.createElement('div');
+    /*     const back = document.createElement('div');
     back.classList.add('card-back');
     back.innerHTML = `
     <h3>${movie.description}</h3>
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
   `; */
 
     card.appendChild(front);
-/*     card.appendChild(back); */
+    /*     card.appendChild(back); */
 
     return card;
   }
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
   `;
 
     // Verso do card
-/*     const back = document.createElement('div');
+    /*     const back = document.createElement('div');
     back.classList.add('card-back');
     back.innerHTML = `
     <h3>${movie.description}</h3>
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
   `; */
 
     card.appendChild(front);
-/*     card.appendChild(back); */
+    /*     card.appendChild(back); */
 
     return card;
   }
@@ -271,7 +271,7 @@ window.onload = function () {
       <h4>Rotten Tomatoes: ${movie.rt_score}%</h4>
     `;
 
-/*     const back = document.createElement('div');
+    /*     const back = document.createElement('div');
     back.classList.add('card-back');
     back.innerHTML = `
       <h3>${movie.description}</h3>
@@ -280,7 +280,7 @@ window.onload = function () {
     `; */
 
     card.appendChild(front);
-/*     card.appendChild(back); */
+    /*     card.appendChild(back); */
 
     return card;
   }
@@ -311,7 +311,7 @@ window.onload = function () {
     <h4>Cor dos cabelos: ${charac.hair_color}</h4>
   `;
 
-/*     const back = document.createElement('div');
+    /*     const back = document.createElement('div');
     back.classList.add('card-back');
     back.innerHTML = `
     <h4>Gênero: ${charac.gender}</h4>
@@ -320,7 +320,7 @@ window.onload = function () {
   `; */
 
     card.appendChild(front);
-/*     card.appendChild(back); */
+    /*     card.appendChild(back); */
 
     return card;
   }

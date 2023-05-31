@@ -78,7 +78,7 @@ footer a {
   text-align: center;
 }
 
-#perfil {
+#perfilV, #perfilM {
   display: block;
   justify-content: space-between;
   text-align: center;
@@ -424,7 +424,7 @@ h1, h2, h3 {
 	color: #ffffff;
 }
 
-#see-more {
+#see-more, #see-moref {
   color: #ffffff;
   border: #ffffff solid;
   padding: 5px;
