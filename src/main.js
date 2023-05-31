@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   searchButton.addEventListener('click', function () {
     const searchTerm = searchInput.value.trim().toLowerCase();
-    const filteredItems = filterItemsBySearchTerm(data, searchTerm);
-    showMovies(filteredItems);
-    console.log(filteredItems);
+    const filteredMovies = filterItemsBySearchTerm(movies, searchTerm);
+    showMovies(filteredMovies);
+    console.log(filteredMovies);
   });
 
   /* calculateStatsButton.addEventListener('click', function () {
