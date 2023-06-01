@@ -39,6 +39,20 @@ export function filterByDirector(movies, director) {
   }
 }
 
+export function calculatePercentage(filteredMovies, movies, filterByDirector) {
+  if (filterByDirector === 'all') {
+    return '100%';
+  } else {
+    const filteredMoviesCount = filteredMovies.filter(movie => movie.director === filterByDirector).length;
+    const totalMoviesCount = movies;
+    
+    const percentage = (filteredMoviesCount / totalMoviesCount) * 100;
+    return Math.round(percentage) + '%';
+  }
+}
+
+
+
 export function filterCharactersByMovie(movies, title) {
   if (title === "all") {
     const allCharacters = movies.flatMap(movie => movie.people);
@@ -89,37 +103,32 @@ export function sortByRottenTomatoesLow(movies) {
   return movies.sort((a, b) => a.rt_score - b.rt_score);
 }
 
-/* export function calculateGenderStats(movies) {
-  const characters = filterCharactersByMovie(movies);
-  const totalCharacters = characters.length;
-  const femaleCharacters = characters.filter(character => character.gender === 'Female').length;
-  const maleCharacters = characters.filter(character => character.gender === 'Male').length;
-  const femalePercentage = (femaleCharacters / totalCharacters) * 100;
-  const malePercentage = (maleCharacters / totalCharacters) * 100;
-
-  return {
-    totalCharacters,
-    femaleCharacters,
-    maleCharacters,
-    femalePercentage,
-    malePercentage
-  };
-} */
-
 let movies = [];
 
-if (typeof fetch !== 'undefined') {
-  fetch('./data/ghibli/ghibli.json')
-    .then(response => response.json())
-    .then(data => {
-      movies = data.films;
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });  
-} /* else {
-  console.error('Fetch is not available. Data cannot be fetched.');
-} */
+export function fetchMovies(callback) {
+  if (typeof fetch !== 'undefined') {
+    fetch('./data/ghibli/ghibli.json')
+      .then(response => response.json())
+      .then(data => {
+        callback(null, data.films);
+      })
+      .catch(error => {
+        callback(error);
+      });
+  } else {
+    callback(new Error('Fetch is not supported.'));
+  }
+}
+
+// Em algum lugar do seu código, chame a função fetchMovies() para obter os filmes
+fetchMovies((error, data) => {
+  if (error) {
+    console.error('Error fetching data:', error);
+  } else {
+    movies = data;
+    // Faça algo com os filmes, como exibir na tela
+  }
+});
 
 export { data };
 export { movies };
