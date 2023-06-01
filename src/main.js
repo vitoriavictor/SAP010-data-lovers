@@ -1,13 +1,11 @@
 import { data } from "./data.js";
-import { filterItemsBySearchTerm, filterByDirector, filterByGender, filterCharactersByMovie, sortByTitleAZ, sortByTitleZA, sortByReleaseYearOld, sortByReleaseYearNew, sortByRottenTomatoesHigh, sortByRottenTomatoesLow } from './data.js';
+import { filterItemsBySearchTerm, filterByDirector, calculatePercentage, filterByGender, filterCharactersByMovie, sortByTitleAZ, sortByTitleZA, sortByReleaseYearOld, sortByReleaseYearNew, sortByRottenTomatoesHigh, sortByRottenTomatoesLow } from './data.js';
 import { movies } from './data.js'; 
 
 // FILTROS
 document.addEventListener('DOMContentLoaded', function () {
   const searchInput = document.getElementById('search');
   const searchButton = document.getElementById('searchButton');
-  /*  const calculateStatsButton = document.getElementById('calculateStatsButton');
-  const resultContainer = document.getElementById('resultContainer'); */
 
   searchButton.addEventListener('click', function () {
     const searchTerm = searchInput.value.trim().toLowerCase();
@@ -15,23 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     showMovies(filteredMovies);
     console.log(filteredMovies);
   });
-
-  /* calculateStatsButton.addEventListener('click', function () {
-    const genderStats = calculateGenderStats(movies);
-    const resultDiv = document.createElement('div');
-    resultDiv.textContent = `Estatísticas de Gênero:
-      Total: ${genderStats.totalCharacters}
-      Masculino: ${genderStats.maleCharacters}
-      Feminino: ${genderStats.femaleCharacters}
-      Percentagem personagens femininos: ${genderStats.femalePercentage}
-      Percentagem personagens masculinos: ${genderStats.malePercentage}
-    `;
-    resultContainer.innerHTML = ''; // Limpa o conteúdo atual
-    resultContainer.appendChild(resultDiv);
-    console.log(genderStats);
-  }); */
   
-
   function showMovies(movies) {
     const moviesContainer = document.getElementById('cards-container');
     moviesContainer.innerHTML = ''; // Limpa o conteúdo atual
@@ -101,17 +83,22 @@ async function loadDirectors() {
 
 document.addEventListener('DOMContentLoaded', function () {
   const directorFilter = document.getElementById('director-filter');
+  const statsContainer = document.getElementById('percentageResult');
 
   directorFilter.addEventListener('change', function () {
     const selectedDirector = directorFilter.value;
     const filteredMovies = filterByDirector(movies, selectedDirector);
-    showMovies(filteredMovies);
-    console.log(filteredMovies);
+    const statsResult = statsContainer.value
+    const percentage = calculatePercentage(movies, statsResult);
+    showMovies(filteredMovies, percentage);
+    console.log(filteredMovies, percentage);
   });
 
   function showMovies(movies) {
     const moviesContainer = document.getElementById('cards-container');
-    moviesContainer.innerHTML = ''; // Limpa o conteúdo atual
+
+    moviesContainer.innerHTML = '';
+    statsContainer.textContent = '';
 
     movies.forEach(movie => {
       const movieCard = createMovieCard(movie);
@@ -325,3 +312,47 @@ window.onload = function () {
     return card;
   }
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+  const clearButton = document.getElementById('cleanFilters');
+
+  clearButton.addEventListener('click', function () {
+    const searchInput = document.getElementById('search');
+    searchInput.value = '';
+
+    const directorFilter = document.getElementById('director-filter');
+    directorFilter.value = 'all';
+
+    const percentageResult = document.getElementById('percentageResult');
+    percentageResult.textContent = '';
+
+    const movieFilter = document.getElementById('movieFilter');
+    movieFilter.value = 'all';
+
+    const genderFilter = document.getElementById('genderFilter');
+    genderFilter.value = 'all';
+
+    const sortAZButton = document.getElementById('sortAZButton');
+    sortAZButton.checked = false;
+
+    const sortZAButton = document.getElementById('sortZAButton');
+    sortZAButton.checked = false;
+
+    const sortReleaseYearButtonOld = document.getElementById('sortReleaseYearButtonOld');
+    sortReleaseYearButtonOld.checked = false;
+
+    const sortReleaseYearButtonNew = document.getElementById('sortReleaseYearButtonNew');
+    sortReleaseYearButtonNew.checked = false;
+
+    const sortRottenTomatoesButtonHigh = document.getElementById('sortRottenTomatoesButtonHigh');
+    sortRottenTomatoesButtonHigh.checked = false;
+
+    const sortRottenTomatoesButtonLow = document.getElementById('sortRottenTomatoesButtonLow');
+    sortRottenTomatoesButtonLow.checked = false;
+
+    const moviesContainer = document.getElementById('cards-container');
+    moviesContainer.innerHTML = '';
+  });
+});
+
+

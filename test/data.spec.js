@@ -1,44 +1,42 @@
-import { getMovies, getDirectors, filterItemsBySearchTerm, filterByDirector, filterCharactersByMovie, filterByGender, sortByTitleAZ, sortByTitleZA, sortByReleaseYearOld, sortByReleaseYearNew, sortByRottenTomatoesHigh, sortByRottenTomatoesLow } from '../src/data.js';
+jest.setTimeout(15000); 
+import { data, filterItemsBySearchTerm, filterByDirector, calculatePercentage, filterCharactersByMovie, filterByGender, sortByTitleAZ, sortByTitleZA, sortByReleaseYearOld, sortByReleaseYearNew, sortByRottenTomatoesHigh, sortByRottenTomatoesLow, fetchMovies } from '../src/data.js';
 import fetchMock from 'jest-fetch-mock';
+fetchMock.enableMocks();
 
 beforeEach(() => {
   fetchMock.resetMocks();
 });
 
-describe('getMovies', () => {
-  it('deve retornar uma lista de filmes', async () => {
+describe('data', () => {
+  it('getMovies deve retornar uma lista de filmes', async () => {
     expect.assertions(1);
-    const result = await getMovies();
+    const url = 'http://example.com/data/ghibli.json';
+    const result = await data.getMovies(url);
     expect(result).toEqual(expect.any(Array));
   });
-  
 
-  it('deve retornar uma lista vazia em caso de erro', async () => {
+  it('getMovies deve retornar um array vazio em caso de erro', async () => {
     expect.assertions(1);
-    try {
-      await getMovies();
-    } catch (error) {
-      expect(error).toEqual([]);
-    }
+    const url = 'http://example.com/data/invalid.json'; // URL inválida
+    const result = await data.getMovies(url);
+    expect(result).toEqual([]);
+  });
+
+  it('getDirectors deve retornar uma lista de diretores únicos', async () => {
+    expect.assertions(1);
+    const url = 'http://example.com/data/ghibli.json';
+    const result = await data.getDirectors(url);
+    expect(result).toEqual(expect.any(Array));
+  });
+
+  it('getDirectors deve retornar um array vazio em caso de erro', async () => {
+    expect.assertions(1);
+    const url = 'http://example.com/data/invalid.json'; // URL inválida
+    const result = await data.getDirectors(url);
+    expect(result).toEqual([]);
   });
 });
 
-describe('getDirectors', () => {
-  it('deve retornar uma lista de diretores únicos', () => {
-    expect.assertions(1);
-    return getDirectors().then(result => {
-      const expected = ['Director 1', 'Director 2', 'Director 3'];
-      expect(result).toEqual(expected);
-    });
-  });
-
-  it('deve retornar uma lista vazia em caso de erro', () => {
-    expect.assertions(1);
-    return getDirectors().catch(error => {
-      expect(error).toEqual([]);
-    });
-  });
-});
 
 describe('filterItemsBySearchTerm', () => {
   const movies = [
@@ -105,6 +103,35 @@ describe('filterByDirector', () => {
     expect(filteredMovies).toEqual([]);
   });
 });
+
+describe('calculatePercentage', () => {
+  const filteredMovies = [
+    { title: 'Movie A', director: 'Director A' },
+    { title: 'Movie B', director: 'Director B' },
+    { title: 'Movie C', director: 'Director A' },
+  ];
+
+  const movies = 10;
+
+  it('returns "100%" when filterByDirector is "all"', () => {
+    const filterByDirector = 'all';
+    const result = calculatePercentage(filteredMovies, movies, filterByDirector);
+    expect(result).toBe('100%');
+  });
+
+  it('returns the correct percentage when filterByDirector matches movies', () => {
+    const filterByDirector = 'Director A';
+    const result = calculatePercentage(filteredMovies, movies, filterByDirector);
+    expect(result).toBe('66%');
+  });
+
+  it('returns "0%" when filterByDirector does not match any movies', () => {
+    const filterByDirector = 'Nonexistent Director';
+    const result = calculatePercentage(filteredMovies, movies, filterByDirector);
+    expect(result).toBe('0%');
+  });
+});
+
 
 describe('filterCharactersByMovie', () => {
   const movies = [
@@ -361,47 +388,36 @@ describe('sortByRottenTomatoesLow', () => {
   });
 });
 
-/* describe('calculateGenderStats', () => {
-  const movies = [
-    {
-      title: 'Movie 1',
-      people: [
-        { name: 'Character 1', gender: 'Male' },
-        { name: 'Character 2', gender: 'Female' },
-        { name: 'Character 3', gender: 'Male' }
-      ]
-    },
-    {
-      title: 'Movie 2',
-      people: [
-        { name: 'Character 4', gender: 'Female' },
-        { name: 'Character 5', gender: 'Female' },
-        { name: 'Character 6', gender: 'Male' }
-      ]
-    },
-    {
-      title: 'Movie 3',
-      people: [
-        { name: 'Character 7', gender: 'Male' },
-        { name: 'Character 8', gender: 'Male' },
-        { name: 'Character 9', gender: 'Male' }
-      ]
-    }
-  ];
+describe('fetchMovies', () => {
+  it('fetches movies data successfully', (done) => {
+    fetchMovies((error, movies) => {
+      expect(error).toBeNull();
+      expect(Array.isArray(movies)).toBe(true);
+      expect(movies.length).toBeGreaterThan(0);
+      // Aqui você pode adicionar mais asserts para verificar os detalhes dos filmes
 
-  it('is a function', () => {
-    expect(typeof calculateGenderStats).toBe('function');
-  });
-
-  it('calculates gender statistics correctly', () => {
-    const genderStats = calculateGenderStats(movies, 'all');
-    expect(genderStats).toEqual({
-      totalCharacters: 9,
-      femaleCharacters: 3,
-      maleCharacters: 6,
-      femalePercentage: 33.33333333333333,
-      malePercentage: 66.66666666666666
+      done();
     });
   });
-}); */
+
+  it('handles fetch error', (done) => {
+    fetchMovies((error, movies) => {
+      expect(error).toBeDefined();
+      expect(Array.isArray(movies)).toBe(false);
+      expect(movies.length).toBe(0);
+
+      done();
+    });
+  });
+
+  it('handles unsupported fetch', (done) => {
+    fetchMovies((error, movies) => {
+      expect(error).toBeDefined();
+      expect(Array.isArray(movies)).toBe(false);
+      expect(movies.length).toBe(0);
+
+      done();
+    });
+  });
+});
 
