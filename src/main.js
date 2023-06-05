@@ -16,8 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
   
   function showMovies(movies) {
     const moviesContainer = document.getElementById('cards-container');
-    moviesContainer.innerHTML = ''; // Limpa o conteúdo atual
-
+    const searchMessage = document.getElementById('search-empty');
+  
+    moviesContainer.innerHTML = '';
+    searchMessage.innerHTML = '';
+  
+    if (movies.length === 0) {
+      searchMessage.textContent = 'Nenhum filme encontrado.';
+      return;
+    }
     movies.forEach(movie => {
       const movieCard = createMovieCard(movie);
       moviesContainer.appendChild(movieCard);
@@ -28,34 +35,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const card = document.createElement('div');
     card.classList.add('movie-card');
 
-    // Frente do card
     const front = document.createElement('div');
     front.classList.add('card-front');
     front.innerHTML = `
     <img src="${movie.poster}" alt="${movie.title}" />
     <h3>${movie.title}</h3>
     <h4>Ano de Lançamento: ${movie.release_date}</h4>
-    <h3>${movie.description}</h3>
+    <h4>${movie.description}</h4>
     <h4>Diretor: ${movie.director}</h4>
-    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
+    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}%</h4>
   `;
 
-    // Verso do card
-    /*     const back = document.createElement('div');
-    back.classList.add('card-back');
-    back.innerHTML = `
-    <h3>${movie.description}</h3>
-    <h4>Diretor: ${movie.director}</h4>
-    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
-  `; */
-
     card.appendChild(front);
-    /*     card.appendChild(back); */
 
     return card;
   }
 });
-
+//carregar lista diretores
 async function loadDirectors() {
   try {
     const directors = await data.getDirectors();
@@ -64,7 +60,6 @@ async function loadDirectors() {
       directorFilter.removeChild(directorFilter.firstChild);
     }
 
-    // Adicionar opções
     const allOption = document.createElement("option");
     allOption.value = "all";
     allOption.textContent = "Todos";
@@ -93,13 +88,11 @@ document.addEventListener('DOMContentLoaded', function () {
     showMovies(filteredMovies, percentage);
     console.log(filteredMovies, percentage);
   });
-
+  
   function showMovies(movies) {
     const moviesContainer = document.getElementById('cards-container');
-
     moviesContainer.innerHTML = '';
     statsContainer.textContent = '';
-
     movies.forEach(movie => {
       const movieCard = createMovieCard(movie);
       moviesContainer.appendChild(movieCard);
@@ -110,29 +103,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const card = document.createElement('div');
     card.classList.add('movie-card');
 
-    // Frente do card
     const front = document.createElement('div');
     front.classList.add('card-front');
     front.innerHTML = `
     <img src="${movie.poster}" alt="${movie.title}" />
     <h3>${movie.title}</h3>
     <h4>Ano de Lançamento: ${movie.release_date}</h4>
-    <h3>${movie.description}</h3>
+    <h4>${movie.description}</h4>
     <h4>Diretor: ${movie.director}</h4>
-    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
+    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}%</h4>
   `;
 
-    // Verso do card
-    /*     const back = document.createElement('div');
-    back.classList.add('card-back');
-    back.innerHTML = `
-    <h3>${movie.description}</h3>
-    <h4>Diretor: ${movie.director}</h4>
-    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}</h4>
-  `; */
-
     card.appendChild(front);
-    /*     card.appendChild(back); */
 
     return card;
   }
@@ -149,7 +131,6 @@ async function loadMovies() {
       movieFilter.removeChild(movieFilter.firstChild);
     }
 
-    // Adicionar opções
     const allOption = document.createElement("option");
     allOption.value = "all";
     allOption.textContent = "Todos";
@@ -235,7 +216,7 @@ window.onload = function () {
 
   function showMovies(movies) {
     const moviesContainer = document.getElementById('cards-container');
-    moviesContainer.innerHTML = ''; // Limpa o conteúdo atual
+    moviesContainer.innerHTML = '';
 
     movies.forEach(movie => {
       const movieCard = createMovieCard(movie);
@@ -253,28 +234,19 @@ window.onload = function () {
       <img src="${movie.poster}" alt="${movie.title}" />
       <h3>${movie.title}</h3>
       <h4>Ano de Lançamento: ${movie.release_date}</h4>
-      <h3>${movie.description}</h3>
+      <h4>${movie.description}</h4>
       <h4>Diretor: ${movie.director}</h4>
-      <h4>Rotten Tomatoes: ${movie.rt_score}%</h4>
+      <h4>Nota no Rotten Tomatoes: ${movie.rt_score}%</h4>
     `;
 
-    /*     const back = document.createElement('div');
-    back.classList.add('card-back');
-    back.innerHTML = `
-      <h3>${movie.description}</h3>
-      <h4>Diretor: ${movie.director}</h4>
-      <h4>Rotten Tomatoes: ${movie.rt_score}%</h4>
-    `; */
-
     card.appendChild(front);
-    /*     card.appendChild(back); */
 
     return card;
   }
- 
+
   function showCharacter(characters) {
     const characterContainer = document.getElementById('cards-container');
-    characterContainer.innerHTML = ''; // Limpa o conteúdo atual
+    characterContainer.innerHTML = '';
 
     characters.forEach(character => {
       const characterCard = createCharacterCard(character);
@@ -298,16 +270,7 @@ window.onload = function () {
     <h4>Cor dos cabelos: ${charac.hair_color}</h4>
   `;
 
-    /*     const back = document.createElement('div');
-    back.classList.add('card-back');
-    back.innerHTML = `
-    <h4>Gênero: ${charac.gender}</h4>
-    <h4>Cor dos olhos: ${charac.eye_color}</h4>
-    <h4>Cor dos cabelos: ${charac.hair_color}</h4>
-  `; */
-
     card.appendChild(front);
-    /*     card.appendChild(back); */
 
     return card;
   }
@@ -319,6 +282,9 @@ document.addEventListener('DOMContentLoaded', function () {
   clearButton.addEventListener('click', function () {
     const searchInput = document.getElementById('search');
     searchInput.value = '';
+
+    const searchEmpty = document.getElementById('search-empty');
+    searchEmpty.textContent = '';
 
     const directorFilter = document.getElementById('director-filter');
     directorFilter.value = 'all';
