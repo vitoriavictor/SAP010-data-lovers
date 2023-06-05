@@ -71,8 +71,8 @@ h1, h2, h3 {
 }
 
 .card-front img {
-  width: 70%;
-  height: 90%;
+  width: 10rem;
+  height: 15rem;
   border-radius: 2rem;
   object-fit: cover;
 }
