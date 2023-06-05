@@ -119,6 +119,7 @@ h1, h2, h3 {
 }
 
 /* BOTÕES */
+
 #calculateStatsButton, #cleanFilters, #searchButton {
   color: #1ba0d0df;
   background-color: #ffffff;
