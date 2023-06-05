@@ -121,14 +121,14 @@ export function fetchMovies(callback) {
 }
 
 // Em algum lugar do seu código, chame a função fetchMovies() para obter os filmes
-//fetchMovies((error, data) => {
-//if (error) {
-/*     console.error('Error fetching data:', error); */
-//} else {
-//movies = data;
-// Faça algo com os filmes, como exibir na tela
-//}
-//});
+fetchMovies((error, data) => {
+  if (error) {
+    /*     console.error('Error fetching data:', error); */
+  } else {
+    movies = data;
+    // Faça algo com os filmes, como exibir na tela
+  }
+});
 
 export { data };
 export { movies };
