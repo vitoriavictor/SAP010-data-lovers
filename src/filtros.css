@@ -117,25 +117,3 @@ h1, h2, h3 {
   border-radius: 1rem;
   padding: 5px;
 }
-
-/* BOTÕES */
-
-#calculateStatsButton, #cleanFilters, #searchButton {
-  color: #1ba0d0df;
-  background-color: #ffffff;
-  border: #ffffff solid;
-  padding: 5px;
-  border-radius: 2rem;
-  text-align: center;
-  text-decoration: none;
-}
-
-#calculateStatsButton:hover, #cleanFilters:hover, #searchButton:hover {
-  color: #ffffff;
-  background-color: rgba(36, 149, 241, 0.579);
-  border: #ffffff solid;
-  padding: 5px;
-  border-radius: 2rem;
-  text-align: center;
-  text-decoration: none;
-}
