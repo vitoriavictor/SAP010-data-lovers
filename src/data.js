@@ -32,24 +32,23 @@ export function filterItemsBySearchTerm(movies, searchTerm) {
 }
 
 export function filterByDirector(movies, director) {
-  if (director === "all") {
+  if (director === 'all') {
     return movies;
   } else {
     return movies.filter(movie => movie.director === director);
   }
 }
 
-export function calculatePercentage(filteredMovies, movies, filterByDirector) {
-  if (filterByDirector === 'all') {
-    return '100%';
+export function calculatePercentage(filteredMovies, totalMoviesCount, selectedDirector) {
+  if (selectedDirector === 'all') {
+    return '';
   } else {
-    const filteredMoviesCount = filteredMovies.filter(movie => movie.director === filterByDirector).length;
-    const totalMoviesCount = movies;
-    
+    const filteredMoviesCount = filteredMovies.length;
     const percentage = (filteredMoviesCount / totalMoviesCount) * 100;
-    return Math.round(percentage) + '%';
+    return 'Os filmes desse diretor representam ' + Math.round(percentage) + '% do total dos filmes.';
   }
 }
+
 
 
 
