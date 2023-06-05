@@ -71,8 +71,8 @@ h1, h2, h3 {
 }
 
 .card-front img {
-  width: 10rem;
-  height: 15rem;
+  width: 12rem;
+  height: 16rem;
   border-radius: 2rem;
   object-fit: cover;
 }
@@ -116,4 +116,11 @@ h1, h2, h3 {
   color: #1ba0d0;
   border-radius: 1rem;
   padding: 5px;
+}
+
+#percentageResult{
+  text-align: center;
+  font-weight: bolder;
+  margin: 10px;
+  text-shadow: 2px 1px #0b6a8d;
 }
