@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <h4>Diretor: ${movie.director}</h4>
     <h4>Nota no Rotten Tomatoes: ${movie.rt_score}%</h4>
   `;
+
     card.appendChild(front);
 
     return card;
