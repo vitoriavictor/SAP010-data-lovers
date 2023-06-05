@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d src"
   },
   "devDependencies": {
+    "-": "^0.0.1",
     "@babel/core": "^7.22.1",
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "@babel/preset-env": "^7.22.4",
