@@ -1,3 +1,12 @@
+#search-empty{
+  color: #ffffff;
+  text-align: center;
+  margin: 15px;
+  font-style: oblique;
+  font-weight: bold;
+  font-size: larger;
+}
+
 /* CARDS FILTROS */
 .container {
   max-width: 90%;
@@ -5,10 +14,14 @@
   padding: 5px;
 }
 
-#cards-container{
+#cards-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+  margin: 0 auto;
+  padding: 15px;
 }
 
 h1, h2, h3 {
@@ -49,36 +62,29 @@ h1, h2, h3 {
 .card-front {
   width: 100%;
   height: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
-  transition: transform 0.6s;
-  padding: 10px;
+  position: relative;
   align-items: center;
-}
-
-.card-front {
-  transform: rotateY(0deg);
 	background-color: #ffffff;
 	color: #1ba0d0;
 	border-radius: 2rem;
+  margin: 5px;
 }
 
 .card-front img {
-  width: 200px;
-  height: 260px;
+  width: 12rem;
+  height: 16rem;
   border-radius: 2rem;
   object-fit: cover;
 }
 
 .card-front p {
-  margin: 0;
+  margin: 5px;
   padding: 5px 0;
 }
 
-.card-front h3 {
-  margin: 5px 0;
+.card-front h4 {
+  margin: 5px;
+  padding: 5px;
 }
 
 @media (max-width: 500px) {
@@ -112,24 +118,9 @@ h1, h2, h3 {
   padding: 5px;
 }
 
-/* BOTÕES */
-
-#calculateStatsButton, #cleanFilters, #searchButton {
-  color: #1ba0d0df;
-  background-color: #ffffff;
-  border: #ffffff solid;
-  padding: 5px;
-  border-radius: 2rem;
+#percentageResult{
   text-align: center;
-  text-decoration: none;
-}
-
-#calculateStatsButton:hover, #cleanFilters:hover, #searchButton:hover {
-  color: #ffffff;
-  background-color: rgba(36, 149, 241, 0.579);
-  border: #ffffff solid;
-  padding: 5px;
-  border-radius: 2rem;
-  text-align: center;
-  text-decoration: none;
+  font-weight: bolder;
+  margin: 10px;
+  text-shadow: 2px 1px #0b6a8d;
 }

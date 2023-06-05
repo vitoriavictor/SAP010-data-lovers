@@ -34,7 +34,7 @@ function createMovieCard(films) {
   description.textContent =  "Sinopse: " + films.description;
 
   const score = document.createElement("p");
-  score.textContent = "Nota no Rotten Tomatoes: " +  films.rt_score;
+  score.textContent = "Nota no Rotten Tomatoes: " +  films.rt_score + "%";
   
   back.appendChild(description);
   back.appendChild(director);
@@ -48,7 +48,7 @@ function createMovieCard(films) {
   // Adicionar função de flip ao card
   card.addEventListener("click", function() {
     card.classList.toggle("flipped");
-    console.log(1);
+    // console.log(1);
   });
   
   return card;
@@ -60,10 +60,10 @@ fetch('./data/ghibli/ghibli.json')
   .then(data => {
     for (let i = 0; i < data.films.length; i++) {
       const filme = data.films[i];
-      console.log(filme);
+      // console.log(filme);
       createMovieCard(filme);
     }
   })
-  .catch(error => {
-    console.error('Ocorreu um erro ao carregar os dados:', error);
-  });
+  // .catch(error => {
+  //   // console.error('Ocorreu um erro ao carregar os dados:', error);
+  // });

@@ -1,4 +1,3 @@
-
 const data = {
   getMovies: async function () {
     try {
@@ -6,7 +5,7 @@ const data = {
       const data = await response.json();
       return data.films || [];
     } catch (error) {
-      console.error('Ocorreu um erro ao obter os dados dos filmes:', error);
+      // console.error('Ocorreu um erro ao obter os dados dos filmes:', error);
       return [];
     }
   },
@@ -19,25 +18,39 @@ const data = {
       const uniqueDirectors = directors.filter((director, index) => directors.indexOf(director) === index);
       return uniqueDirectors;
     } catch (error) {
-      console.error('Ocorreu um erro ao obter os diretores:', error);
+      // console.error('Ocorreu um erro ao obter os diretores:', error);
       return [];
     }
   }
 };
 
-export function filterItemsBySearchTerm(item, searchTerm) {
+export function filterItemsBySearchTerm(movies, searchTerm) {
   return movies.filter(item => {
     const lowerCaseTitle = item.title.toLowerCase();
     return lowerCaseTitle.includes(searchTerm);
   });
 }
+
 export function filterByDirector(movies, director) {
-  if (director === "all") {
+  if (director === 'all') {
     return movies;
   } else {
     return movies.filter(movie => movie.director === director);
   }
 }
+
+export function calculatePercentage(filteredMovies, totalMoviesCount, selectedDirector) {
+  if (selectedDirector === 'all') {
+    return '';
+  } else {
+    const filteredMoviesCount = filteredMovies.length;
+    const percentage = (filteredMoviesCount / totalMoviesCount) * 100;
+    return 'Os filmes desse diretor representam ' + Math.round(percentage) + '% do total dos filmes.';
+  }
+}
+
+
+
 
 export function filterCharactersByMovie(movies, title) {
   if (title === "all") {
@@ -89,37 +102,32 @@ export function sortByRottenTomatoesLow(movies) {
   return movies.sort((a, b) => a.rt_score - b.rt_score);
 }
 
-/* export function calculateGenderStats(movies) {
-  const characters = filterCharactersByMovie(movies);
-  const totalCharacters = characters.length;
-  const femaleCharacters = characters.filter(character => character.gender === 'Female').length;
-  const maleCharacters = characters.filter(character => character.gender === 'Male').length;
-  const femalePercentage = (femaleCharacters / totalCharacters) * 100;
-  const malePercentage = (maleCharacters / totalCharacters) * 100;
-
-  return {
-    totalCharacters,
-    femaleCharacters,
-    maleCharacters,
-    femalePercentage,
-    malePercentage
-  };
-} */
-
 let movies = [];
 
-if (typeof fetch !== 'undefined') {
-  fetch('./data/ghibli/ghibli.json')
-    .then(response => response.json())
-    .then(data => {
-      movies = data.films;
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
-} else {
-  console.error('Fetch is not available. Data cannot be fetched.');
+function fetchMovies(callback) {
+  if (typeof fetch !== 'undefined') {
+    fetch('./data/ghibli/ghibli.json')
+      .then(response => response.json())
+      .then(data => {
+        callback(null, data.films);
+      })
+      .catch(error => {
+        callback(error);
+      });
+  } else {
+    callback(new Error('Fetch is not supported.'));
+  }
 }
+
+// Em algum lugar do seu código, chame a função fetchMovies() para obter os filmes
+fetchMovies((error, data) => {
+  if (error) {
+    return [];
+  } else {
+    movies = data;
+    // Faça algo com os filmes, como exibir na tela
+  }
+});
 
 export { data };
 export { movies };

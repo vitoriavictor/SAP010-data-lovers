@@ -11,7 +11,7 @@
 <body>
   <div class="background-image"></div>
   <header id="header">
-    <a href="index.html"><img class="logo-icon" src="img/totoro.gif" alt="Studio Ghibli"></a>
+    <a class="menu" href="index.html"><img class="logo-icon" src="img/totoro.gif" alt="Studio Ghibli"></a>
     <h1>Filmografia</h1>
     <nav id="nav">
       <button aria-label="Abrir Menu" id="btn-mobile" aria-haspopup="true" aria-controls="menu" aria-expanded="false">Menu
@@ -19,10 +19,10 @@
       </button>
       <ul id="menu" role="menu">
 <!--         <li><a href="index.html">Home</a></li> -->
-        <li><a href="studio.html">O Estúdio Ghibli</a></li>
-        <li><a href="diretores.html">Diretores</a></li>
-        <li><a href="filmografia.html">Filmografia</a></li>
-        <li><a href="filtros.html">Filtros de Busca</a></li>
+        <li><a class="menu" href="studio.html">O Estúdio Ghibli</a></li>
+        <li><a class="menu" href="diretores.html">Diretores</a></li>
+        <li><a class="menu" href="filmografia.html">Filmografia</a></li>
+        <li><a class="menu" href="filtros.html">Filtros de Busca</a></li>
       </ul>
     </nav>
   </header>
@@ -34,15 +34,16 @@
         <div id="card"></div>
         <div id="movie-container"></div>
       </div>
+      <a class="btn" href="filtros.html">Acesse os Filtros de Busca</a>
     </section>
   </main>
   <footer>
     <h2>Projeto Data-Lovers</h2>
-    <a href="https://www.laboratoria.la/br"><h3>Bootcamp Laboratória</h3></a>
+    <a class="footerLink" href="https://www.laboratoria.la/br"><h3>Bootcamp Laboratória</h3></a>
     <h4>Desenvolvido por</h4> 
-    <a id="perfil" href="https://github.com/vitoriavictor">Vitória Victor</a>
+    <a class="footerLink" href="https://github.com/vitoriavictor">Vitória Victor</a>
     <p>e</p>
-    <a id="perfil" href="https://github.com/Marinacb7">Marina Cordeiro</a>
+    <a class="footerLink" href="https://github.com/Marinacb7">Marina Cordeiro</a>
   </footer>
   <script src="menu.js" type="module"></script>
   <script src="lista.js" type="module"></script>

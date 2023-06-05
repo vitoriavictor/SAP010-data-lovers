@@ -14,7 +14,7 @@
 <body>
   <div class="background-image"></div>
   <header id="header">
-    <a href="index.html"><img class="logo-icon" src="img/totoro.gif" alt="Studio Ghibli"></a>
+    <a class="menu" href="index.html"><img class="logo-icon" src="img/totoro.gif" alt="Studio Ghibli"></a>
     <h1>Filtros de Busca</h1>
     <nav id="nav">
       <button aria-label="Abrir Menu" id="btn-mobile" aria-haspopup="true" aria-controls="menu"
@@ -23,10 +23,10 @@
       </button>
       <ul id="menu" role="menu">
         <!--         <li><a href="index.html">Home</a></li> -->
-        <li><a href="studio.html">O Estúdio Ghibli</a></li>
-        <li><a href="diretores.html">Diretores</a></li>
-        <li><a href="filmografia.html">Filmografia</a></li>
-        <li><a href="filtros.html">Filtros de Busca</a></li>
+        <li><a class="menu" href="studio.html">O Estúdio Ghibli</a></li>
+        <li><a class="menu" href="diretores.html">Diretores</a></li>
+        <li><a class="menu" href="filmografia.html">Filmografia</a></li>
+        <li><a class="menu" href="filtros.html">Filtros de Busca</a></li>
       </ul>
     </nav>
   </header>
@@ -36,12 +36,13 @@
         <section id="searchFilm">
           <label for="search" data-filter="films" id="search-label">Pesquise o nome do filme:</label>
           <input type="text" id="search">
-          <button id="searchButton">Buscar</button>
+          <button class="btn" id="searchButton">Buscar</button>
         </section>
         <!-- Filtro de diretor -->
         <section id="filmDirectorCharac">
           <label for="director-filter" data-filter="director" id="director-label">Diretor:</label>
           <select id="director-filter"></select>
+          <div id="percentageResult"></div>
         <!-- Filtro de filme -->
           <label for="movieFilter" data-filter="movie" id="movie-label">Personagens por Filme:</label>
           <select id="movieFilter"></select>
@@ -53,7 +54,8 @@
             <option value="all">Todos</option>
             <option value="male">Masculino</option>
             <option value="female">Feminino</option>
-            <!-- Outros gêneros... -->
+            <option value="NA">NA</option>
+            <option value="Unknown (Possible Male)">Unknown (Possible Male)</option>  
           </select>
         </section>
         <section id="a-z">
@@ -86,27 +88,29 @@
           <input type="radio" name="sort" id="sortRottenTomatoesButtonLow">
         </section>
 
-        <!-- Calcular estatísticas -->
-        <section id="statistics">
+       <!-- Calcular estatísticas -->
+        <!-- <section id="statistics">
           <label for="" id="">Percentual de personagens femininas/masculinas:</label>
           <div id="resultContainer"></div>
           <button id="calculateStatsButton">Calcular Estatísticas</button> 
-        </section>
+        </section> --> 
         <!-- Limpar filtros  -->
         <section id="clean">
-          <button id="cleanFilters">Limpar Filtros</button>
+          <button class="btn" id="cleanFilters">Limpar Filtros</button>
         </section>
-        <div id="cards-container"></div>
+<!--         <div id="cards-container"></div> -->
       </div>
     </div>
   </main>
+  <div id="search-empty"></div>
+  <div id="cards-container"></div>
   <footer>
     <h2>Projeto Data-Lovers</h2>
-    <a href="https://www.laboratoria.la/br"><h3>Bootcamp Laboratória</h3></a>
+    <a class="footerLink" href="https://www.laboratoria.la/br"><h3>Bootcamp Laboratória</h3></a>
     <h4>Desenvolvido por</h4> 
-    <a id="perfil" href="https://github.com/vitoriavictor">Vitória Victor</a>
+    <a class="footerLink" href="https://github.com/vitoriavictor">Vitória Victor</a>
     <p>e</p>
-    <a id="perfil" href="https://github.com/Marinacb7">Marina Cordeiro</a>
+    <a class="footerLink" href="https://github.com/Marinacb7">Marina Cordeiro</a>
   </footer>
   <script src="menu.js" type="module"></script>
   <script src="main.js" type="module"></script>
