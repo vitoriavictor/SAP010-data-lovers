@@ -5,7 +5,7 @@ const data = {
       const data = await response.json();
       return data.films || [];
     } catch (error) {
-      console.error('Ocorreu um erro ao obter os dados dos filmes:', error);
+      // console.error('Ocorreu um erro ao obter os dados dos filmes:', error);
       return [];
     }
   },
@@ -18,7 +18,7 @@ const data = {
       const uniqueDirectors = directors.filter((director, index) => directors.indexOf(director) === index);
       return uniqueDirectors;
     } catch (error) {
-      console.error('Ocorreu um erro ao obter os diretores:', error);
+      // console.error('Ocorreu um erro ao obter os diretores:', error);
       return [];
     }
   }
