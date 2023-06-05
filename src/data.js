@@ -5,7 +5,7 @@ const data = {
       const data = await response.json();
       return data.films || [];
     } catch (error) {
-      console.error('Ocorreu um erro ao obter os dados dos filmes:', error);
+      /*       console.error('Ocorreu um erro ao obter os dados dos filmes:', error); */
       return [];
     }
   },
@@ -18,7 +18,7 @@ const data = {
       const uniqueDirectors = directors.filter((director, index) => directors.indexOf(director) === index);
       return uniqueDirectors;
     } catch (error) {
-      console.error('Ocorreu um erro ao obter os diretores:', error);
+      /*       console.error('Ocorreu um erro ao obter os diretores:', error); */
       return [];
     }
   }
@@ -45,7 +45,7 @@ export function calculatePercentage(filteredMovies, movies, filterByDirector) {
   } else {
     const filteredMoviesCount = filteredMovies.filter(movie => movie.director === filterByDirector).length;
     const totalMoviesCount = movies;
-    
+
     const percentage = (filteredMoviesCount / totalMoviesCount) * 100;
     return Math.round(percentage) + '%';
   }
@@ -103,7 +103,7 @@ export function sortByRottenTomatoesLow(movies) {
   return movies.sort((a, b) => a.rt_score - b.rt_score);
 }
 
-let movies = [];
+const movies = [];
 
 export function fetchMovies(callback) {
   if (typeof fetch !== 'undefined') {
@@ -121,14 +121,14 @@ export function fetchMovies(callback) {
 }
 
 // Em algum lugar do seu código, chame a função fetchMovies() para obter os filmes
-fetchMovies((error, data) => {
-  if (error) {
-    console.error('Error fetching data:', error);
-  } else {
-    movies = data;
-    // Faça algo com os filmes, como exibir na tela
-  }
-});
+//fetchMovies((error, data) => {
+//if (error) {
+/*     console.error('Error fetching data:', error); */
+//} else {
+//movies = data;
+// Faça algo com os filmes, como exibir na tela
+//}
+//});
 
 export { data };
 export { movies };

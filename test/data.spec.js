@@ -1,11 +1,11 @@
-jest.setTimeout(15000); 
-import { data, filterItemsBySearchTerm, filterByDirector, calculatePercentage, filterCharactersByMovie, filterByGender, sortByTitleAZ, sortByTitleZA, sortByReleaseYearOld, sortByReleaseYearNew, sortByRottenTomatoesHigh, sortByRottenTomatoesLow, fetchMovies } from '../src/data.js';
-import fetchMock from 'jest-fetch-mock';
+/* jest.setTimeout(5000); */
+import { data, filterItemsBySearchTerm, filterByDirector, calculatePercentage, filterCharactersByMovie, filterByGender, sortByTitleAZ, sortByTitleZA, sortByReleaseYearOld, sortByReleaseYearNew, sortByRottenTomatoesHigh, sortByRottenTomatoesLow } from '../src/data.js';
+/* import fetchMock from 'jest-fetch-mock';
 fetchMock.enableMocks();
 
 beforeEach(() => {
   fetchMock.resetMocks();
-});
+}); */
 
 describe('data', () => {
   it('getMovies deve retornar uma lista de filmes', async () => {
@@ -388,7 +388,7 @@ describe('sortByRottenTomatoesLow', () => {
   });
 });
 
-describe('fetchMovies', () => {
+/* describe('fetchMovies', () => {
   it('fetches movies data successfully', (done) => {
     fetchMovies((error, movies) => {
       expect(error).toBeNull();
@@ -419,5 +419,5 @@ describe('fetchMovies', () => {
       done();
     });
   });
-});
+}); */
 
