@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchTerm = searchInput.value.trim().toLowerCase();
     const filteredMovies = filterItemsBySearchTerm(movies, searchTerm);
     showMovies(filteredMovies);
-    console.log(filteredMovies);
   });
   
   function showMovies(movies) {
@@ -72,7 +71,7 @@ async function loadDirectors() {
       directorFilter.appendChild(option);
     });
   } catch (error) {
-    console.log('Ocorreu um erro ao carregar os diretores:', error);
+    // console.log('Ocorreu um erro ao carregar os diretores:', error);
   }
 }
 
@@ -86,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const statsResult = statsContainer.value
     const percentage = calculatePercentage(movies, statsResult);
     showMovies(filteredMovies, percentage);
-    console.log(filteredMovies, percentage);
   });
   
   function showMovies(movies) {
@@ -143,7 +141,7 @@ async function loadMovies() {
       movieFilter.appendChild(option);
     });
   } catch (error) {
-    console.log('Ocorreu um erro ao carregar os filmes:', error);
+    // console.log('Ocorreu um erro ao carregar os filmes:', error);
   }
 }
 
@@ -162,56 +160,48 @@ window.onload = function () {
     const selectedMovie = movieFilter.value;
     const filteredCharacter = filterCharactersByMovie(movies, selectedMovie);
     showCharacter(filteredCharacter);
-    console.log(filteredCharacter);
   });
   
   genderFilter.addEventListener('change', function () {
     const selectedGender = genderFilter.value;
     const filteredMovies = filterByGender(movies, selectedGender);
     showCharacter(filteredMovies);
-    console.log(filteredMovies);
   });
 
   sortAZButton.addEventListener('click', function () {
     const sortedAZ = sortAZButton.value;
     const sortedMovies = sortByTitleAZ(movies, sortedAZ);
     showMovies(sortedMovies);
-    console.log(sortedMovies);
   });
 
   sortZAButton.addEventListener('click', function () {
     const sortedZA = sortZAButton.value;
     const sortedMovies = sortByTitleZA(movies, sortedZA);
     showMovies(sortedMovies);
-    console.log(sortedMovies);
   });
 
   sortReleaseYearButtonOld.addEventListener('click', function () {
     const sortedYear = sortReleaseYearButtonOld.value;
     const sortedMovies = sortByReleaseYearOld(movies, sortedYear);
     showMovies(sortedMovies);
-    console.log(sortedMovies);
   });
 
   sortReleaseYearButtonNew.addEventListener('click', function () {
     const sortedYear = sortReleaseYearButtonNew.value;
     const sortedMovies = sortByReleaseYearNew(movies, sortedYear);
     showMovies(sortedMovies);
-    console.log(sortedMovies);
   });
 
   sortRottenTomatoesButtonHigh.addEventListener('click', function () {
     const sortedRT = sortRottenTomatoesButtonHigh.value;
     const sortedMovies = sortByRottenTomatoesHigh(movies, sortedRT);
     showMovies(sortedMovies);
-    console.log(sortedMovies);
   });
 
   sortRottenTomatoesButtonLow.addEventListener('click', function () {
     const sortedRT = sortRottenTomatoesButtonLow.value;
     const sortedMovies = sortByRottenTomatoesLow(movies, sortedRT);
     showMovies(sortedMovies);
-    console.log(sortedMovies);
   });
 
   function showMovies(movies) {

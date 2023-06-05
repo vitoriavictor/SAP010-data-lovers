@@ -5,7 +5,7 @@ const data = {
       const data = await response.json();
       return data.films || [];
     } catch (error) {
-      console.error('Ocorreu um erro ao obter os dados dos filmes:', error);
+      // console.error('Ocorreu um erro ao obter os dados dos filmes:', error);
       return [];
     }
   },
@@ -18,7 +18,7 @@ const data = {
       const uniqueDirectors = directors.filter((director, index) => directors.indexOf(director) === index);
       return uniqueDirectors;
     } catch (error) {
-      console.error('Ocorreu um erro ao obter os diretores:', error);
+      // console.error('Ocorreu um erro ao obter os diretores:', error);
       return [];
     }
   }
@@ -105,7 +105,7 @@ export function sortByRottenTomatoesLow(movies) {
 
 let movies = [];
 
-export function fetchMovies(callback) {
+function fetchMovies(callback) {
   if (typeof fetch !== 'undefined') {
     fetch('./data/ghibli/ghibli.json')
       .then(response => response.json())
@@ -123,7 +123,7 @@ export function fetchMovies(callback) {
 // Em algum lugar do seu código, chame a função fetchMovies() para obter os filmes
 fetchMovies((error, data) => {
   if (error) {
-    console.error('Error fetching data:', error);
+    return [];
   } else {
     movies = data;
     // Faça algo com os filmes, como exibir na tela
