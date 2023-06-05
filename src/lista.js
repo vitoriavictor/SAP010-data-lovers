@@ -34,7 +34,7 @@ function createMovieCard(films) {
   description.textContent =  "Sinopse: " + films.description;
 
   const score = document.createElement("p");
-  score.textContent = "Nota no Rotten Tomatoes: " +  films.rt_score;
+  score.textContent = "Nota no Rotten Tomatoes: " +  films.rt_score + "%";
   
   back.appendChild(description);
   back.appendChild(director);
