@@ -79,11 +79,18 @@ footer a {
   text-align: center;
 }
 
-#perfilV, #perfilM {
+.footerLink {
   display: block;
   justify-content: space-between;
   text-align: center;
   align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.footerLink:hover {
+  font-style: italic;
+  text-shadow: 2px 2px #0b6a8d;
 }
 
 @media (max-width: 768px) {
@@ -112,12 +119,12 @@ body, html, ul {
   padding: 0px;
 }
 
-a {
+.menu {
   color: #ffffff;
   text-decoration: none;
 }
 
-a:hover {
+.menu:hover {
   background: rgba(36, 149, 241, 0.579);
 	border-radius: 10px;
 }
@@ -367,6 +374,25 @@ h1, h2, h3 {
   }
 }
 
+/* FILMOGRAFIA */
+
+.btn {
+  color: #1ba0d0;
+  border: #1ba0d0 solid;
+  background-color: #ffffff;
+  padding: 8px;
+  border-radius: 2rem;
+  align-items: center;
+  margin: 10px;
+  text-decoration: none;  
+}
+
+.btn:hover {
+  background: rgba(36, 149, 241, 0.579);
+  color: #ffffff;
+  font-style: italic;
+}
+
 /* DIRETORES */
 #content-director {
   display: flex;
@@ -391,14 +417,6 @@ h1, h2, h3 {
   align-items: center;
   min-height: 150px; /* altura mínima para os cards */
 }
-
-#hmiyazaki a, #takahata a, #kondo a, #gmiyazaki a, #morita a, #yonebayashi a {
-  color: #1ba0d0;
-  border: #1ba0d0 solid;
-  padding: 5px;
-  border-radius: 2rem;
-  align-items: center;
-} 
 
 #hmiyazaki img, #takahata img, #kondo img, #gmiyazaki img, #morita img, #yonebayashi img {
   width: 100%;
