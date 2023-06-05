@@ -165,7 +165,7 @@ window.onload = function () {
     console.log(filteredCharacter);
   });
   
-  genderFilter.addEventListener('click', function () {
+  genderFilter.addEventListener('change', function () {
     const selectedGender = genderFilter.value;
     const filteredMovies = filterByGender(movies, selectedGender);
     showCharacter(filteredMovies);
