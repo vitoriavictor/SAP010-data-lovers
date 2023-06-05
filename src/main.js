@@ -82,15 +82,14 @@ document.addEventListener('DOMContentLoaded', function () {
   directorFilter.addEventListener('change', function () {
     const selectedDirector = directorFilter.value;
     const filteredMovies = filterByDirector(movies, selectedDirector);
-    const statsResult = statsContainer.value
-    const percentage = calculatePercentage(movies, statsResult);
-    showMovies(filteredMovies, percentage);
+    const percentage = calculatePercentage(filteredMovies, movies.length, selectedDirector);
+    showMovies(filteredMovies);
+    statsContainer.textContent = percentage;
   });
-  
+
   function showMovies(movies) {
     const moviesContainer = document.getElementById('cards-container');
     moviesContainer.innerHTML = '';
-    statsContainer.textContent = '';
     movies.forEach(movie => {
       const movieCard = createMovieCard(movie);
       moviesContainer.appendChild(movieCard);
@@ -104,19 +103,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const front = document.createElement('div');
     front.classList.add('card-front');
     front.innerHTML = `
-    <img src="${movie.poster}" alt="${movie.title}" />
-    <h3>${movie.title}</h3>
-    <h4>Ano de Lançamento: ${movie.release_date}</h4>
-    <h4>${movie.description}</h4>
-    <h4>Diretor: ${movie.director}</h4>
-    <h4>Nota no Rotten Tomatoes: ${movie.rt_score}%</h4>
-  `;
+      <img src="${movie.poster}" alt="${movie.title}" />
+      <h3>${movie.title}</h3>
+      <h4>Ano de Lançamento: ${movie.release_date}</h4>
+      <h4>${movie.description}</h4>
+      <h4>Diretor: ${movie.director}</h4>
+      <h4>Nota no Rotten Tomatoes: ${movie.rt_score}%</h4>
+    `;
 
     card.appendChild(front);
 
     return card;
   }
-  loadDirectors();
+
+  loadDirectors(); // Carrega os diretores do arquivo JSON
 });
 
 loadMovies();
