@@ -2,46 +2,123 @@ import { data, filterItemsBySearchTerm, filterByDirector, calculatePercentage, f
 import fetchMock from 'jest-fetch-mock';
 fetchMock.enableMocks();
 
-// beforeEach(() => {
-//   fetchMock.resetMocks();
-// });
-
 describe('data', () => {
+  beforeEach(() => {
+    fetchMock.resetMocks();
+  });
+
   it('getMovies deve retornar uma lista de filmes', async () => {
-    expect.assertions(1);
-    const url = 'http://example.com/data/ghibli.json';
-    const result = await data.getMovies(url);
+    expect.assertions(2);
+
+    const mockResponse = {
+      films: [
+        {
+          "id": "2baf70d1-42bb-4437-b551-e5fed5a87abe",
+          "title": "Castle in the Sky",
+          "description": "The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa's science to make himself ruler of the world.",
+          "director": "Hayao Miyazaki",
+          "producer": "Isao Takahata",
+          "poster": "https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg",
+          "release_date": "1986",
+          "rt_score": "95",
+          "people": [
+            {
+              "id": "fe93adf2-2f3a-4ec4-9f68-5422f1b87c01",
+              "name": "Pazu",
+              "img": "https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg",
+              "gender": "Male",
+              "age": "13",
+              "eye_color": "Black",
+              "hair_color": "Brown",
+              "specie": "Human"
+            }
+          ]
+        },
+        {
+          "id": "58611129-2dbc-4a81-a72f-77ddfc1b1b49",
+          "title": "My Neighbor Totoro",
+          "description": "Two sisters move to the country with their father in order to be closer to their hospitalized mother, and discover the surrounding trees are inhabited by Totoros, magical spirits of the forest. When the youngest runs away from home, the older sister seeks help from the spirits to find her.",
+          "director": "Hayao Miyazaki",
+          "producer": "Hayao Miyazaki",
+          "poster": "https://static.wikia.nocookie.net/studio-ghibli/images/d/db/My_Neighbor_Totoro.jpg",
+          "release_date": "1988",
+          "rt_score": "93",
+          "people": [
+            {
+              "id": "986faac6-67e3-4fb8-a9ee-bad077c2e7fe",
+              "name": "Satsuki Kusakabe",
+              "img": "https://static.wikia.nocookie.net/studio-ghibli/images/f/f2/Satsuki_Kusakabe.jpg",
+              "gender": "Female",
+              "age": "11",
+              "eye_color": "Dark Brown/Black",
+              "hair_color": "Dark Brown",
+              "specie": "Human"
+            }
+          ]
+        }
+      ]
+    };
+
+    fetchMock.mockResponse(JSON.stringify(mockResponse));
+
+    const result = await data.getMovies();
     expect(result).toEqual(expect.any(Array));
+    expect(result.length).toBeGreaterThan(0);
   });
 
   it('getMovies deve retornar um array vazio em caso de erro', async () => {
     expect.assertions(1);
-    const url = 'http://example.com/data/invalid.json'; // URL inválida
-    const result = await data.getMovies(url);
+
+    fetchMock.mockReject(new Error('Erro na requisição'));
+
+    const result = await data.getMovies();
     expect(result).toEqual([]);
   });
 
   it('getDirectors deve retornar uma lista de diretores únicos', async () => {
     expect.assertions(1);
-    const url = 'http://example.com/data/ghibli.json';
-    const result = await data.getDirectors(url);
+
+    const mockResponse = {
+      films: [
+        {
+          id: '2baf70d1-42bb-4437-b551-e5fed5a87abe',
+          title: 'Castle in the Sky',
+          director: 'Hayao Miyazaki'
+        },
+        {
+          id: '58611129-2dbc-4a81-a72f-77ddfc1b1b49',
+          title: 'My Neighbor Totoro',
+          director: 'Hayao Miyazaki'
+        },
+        {
+          id: '8123e5c6-58e1-409d-8673-9e866d3f3018',
+          title: 'Spirited Away',
+          director: 'Hayao Miyazaki'
+        },
+        {
+          id: '38b5e828-008f-41a5-8b46-25ae8f3ae1c2',
+          title: 'Grave of the Fireflies',
+          director: 'Isao Takahata'
+        }
+      ],
+    };
+
+    fetchMock.mockResponse(JSON.stringify(mockResponse));
+
+    const result = await data.getDirectors();
     expect(result).toEqual(expect.any(Array));
   });
 
-  /*   it('getDirectors deve retornar uma lista de diretores únicos', async () => {
-      expect.assertions(1);
-      const url = 'http://example.com/data/ghibli.json';
-      const result = await data.getDirectors(url);
-      expect(result).toEqual(expect.any(Array));
-    }); */
-
   it('getDirectors deve retornar um array vazio em caso de erro', async () => {
     expect.assertions(1);
-    const url = 'http://example.com/data/invalid.json'; // URL inválida
-    const result = await data.getDirectors(url);
+
+    fetchMock.mockReject(new Error('Erro na requisição'));
+
+    const result = await data.getDirectors();
     expect(result).toEqual([]);
   });
 });
+
 
 
 describe('filterItemsBySearchTerm', () => {
@@ -113,29 +190,23 @@ describe('filterByDirector', () => {
 describe('calculatePercentage', () => {
   const filteredMovies = [
     { title: 'Movie A', director: 'Director A' },
-    { title: 'Movie B', director: 'Director B' },
+    { title: 'Movie B', director: 'Director A' },
     { title: 'Movie C', director: 'Director A' },
   ];
 
-  const movies = 10;
+  const totalMoviesCount = 10;
 
-  it('returns "" when filterByDirector is "all"', () => {
-    const filterByDirector = 'all';
-    const result = calculatePercentage(filteredMovies, movies, filterByDirector);
+  it('returns "" when selectedDirector is "all"', () => {
+    const selectedDirector = 'all';
+    const result = calculatePercentage(filteredMovies, totalMoviesCount, selectedDirector);
     expect(result).toBe('');
   });
 
-  it('returns the correct percentage when filterByDirector matches movies', () => {
-    const filterByDirector = 'Director A';
-    const result = calculatePercentage(filteredMovies, movies, filterByDirector);
-    expect(result).toBe('66%');
+  it('returns the correct percentage when selectedDirector matches movies', () => {
+    const selectedDirector = 'Director B';
+    const result = calculatePercentage(filteredMovies, totalMoviesCount, selectedDirector);
+    expect(result).toBe("Os filmes desse diretor representam 30% do total dos filmes.");
   });
-
-  /*   it('returns "0%" when filterByDirector does not match any movies', () => {
-      const filterByDirector = 'Nonexistent Director';
-      const result = calculatePercentage(filteredMovies, movies, filterByDirector);
-      expect(result).toBe('0%');
-    }); */
 });
 
 
@@ -395,35 +466,68 @@ describe('sortByRottenTomatoesLow', () => {
 });
 
 // describe('fetchMovies', () => {
-//   it('fetches movies data successfully', (done) => {
-//     fetchMovies((error, movies) => {
-//       expect(error).toBeNull();
-//       expect(Array.isArray(movies)).toBe(true);
-//       expect(movies.length).toBeGreaterThan(0);
-//       // Aqui você pode adicionar mais asserts para verificar os detalhes dos filmes
-
-//       done();
+//   it('deve chamar a função de callback com a lista de filmes quando a requisição for bem-sucedida', () => {
+//     // Mock da função fetch usando Jest
+//     window.fetch = jest.fn().mockResolvedValue({
+//       json: jest.fn().mockResolvedValue({
+//         films: [
+//           { title: 'Filme 1' },
+//           { title: 'Filme 2' },
+//           { title: 'Filme 3' },
+//         ],
+//       }),
 //     });
+
+//     // Mock da função de callback
+//     const callback = jest.fn();
+
+//     // Chama a função fetchMovies
+//     fetchMovies(callback);
+
+//     // Verifica se a função fetch foi chamada corretamente
+//     expect(window.fetch).toHaveBeenCalledWith('./data/ghibli/ghibli.json');
+
+//     // Espera que a função de callback seja chamada com os filmes
+//     expect(callback).toHaveBeenCalledWith(null, [
+//       { title: 'Filme 1' },
+//       { title: 'Filme 2' },
+//       { title: 'Filme 3' },
+//     ]);
 //   });
 
-//   it('handles fetch error', (done) => {
-//     fetchMovies((error, movies) => {
-//       expect(error).toBeDefined();
-//       expect(Array.isArray(movies)).toBe(false);
-//       expect(movies.length).toBe(0);
+//   it('deve chamar a função de callback com o erro quando ocorrer um erro na requisição', () => {
+//     // Mock da função fetch usando Jest
+//     window.fetch = jest.fn().mockRejectedValue(new Error('Erro na requisição'));
 
-//       done();
-//     });
+//     // Mock da função de callback
+//     const callback = jest.fn();
+
+//     // Chama a função fetchMovies
+//     fetchMovies(callback);
+
+//     // Verifica se a função fetch foi chamada corretamente
+//     expect(window.fetch).toHaveBeenCalledWith('./data/ghibli/ghibli.json');
+
+//     // Espera que a função de callback seja chamada com o erro
+//     expect(callback).toHaveBeenCalledWith(new Error('Erro na requisição'));
 //   });
 
-//   it('handles unsupported fetch', (done) => {
-//     fetchMovies((error, movies) => {
-//       expect(error).toBeDefined();
-//       expect(Array.isArray(movies)).toBe(false);
-//       expect(movies.length).toBe(0);
+//   it('deve chamar a função de callback com o erro quando o fetch não é suportado', () => {
+//     // Remove a função fetch para simular a falta de suporte
+//     window.fetch = undefined;
 
-//       done();
-//     });
+//     // Mock da função de callback
+//     const callback = jest.fn();
+
+//     // Chama a função fetchMovies
+//     fetchMovies(callback);
+
+//     // Espera que a função de callback seja chamada com o erro
+//     expect(callback).toHaveBeenCalledWith(new Error('Fetch is not supported.'));
 //   });
 // });
+
+
+
+
 

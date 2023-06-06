@@ -49,9 +49,6 @@ export function calculatePercentage(filteredMovies, totalMoviesCount, selectedDi
   }
 }
 
-
-
-
 export function filterCharactersByMovie(movies, title) {
   if (title === "all") {
     const allCharacters = movies.flatMap(movie => movie.people);
@@ -118,14 +115,11 @@ function fetchMovies(callback) {
     callback(new Error('Fetch is not supported.'));
   }
 }
-
-// Em algum lugar do seu código, chame a função fetchMovies() para obter os filmes
 fetchMovies((error, data) => {
   if (error) {
     return [];
   } else {
     movies = data;
-    // Faça algo com os filmes, como exibir na tela
   }
 });
 
