@@ -1,10 +1,12 @@
 # Data Lovers
 
 ## 
-Acesse o projeto:
+**Acesse o projeto:**
+
 [<img alt="WEBSITE" height="50" src="https://cdn4.iconfinder.com/data/icons/movies-1-flat/60/042_-_totoro-1024.png">](https://github.com/Marinacb7/SAP010-data-lovers)
 
-Tecnologias utilizadas
+**Tecnologias utilizadas**
+
 <img alt="Figma" height="45" src="https://cdn4.iconfinder.com/data/icons/logos-brands-in-colors/3000/figma-logo-256.png" /><img alt="git" height="40"  src="https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_git-256.png" /><img alt="github" height="45"  src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-3/24/github-256.png" /><img alt="HTML" height="50"  src="https://cdn2.iconfinder.com/data/icons/designer-skills/128/code-programming-html-markup-develop-layout-language-512.png"> <img alt="CSS" height="50" src="https://cdn2.iconfinder.com/data/icons/designer-skills/128/code-programming-css-style-develop-layout-language-512.png"> <img alt="JS" height="50" src="https://cdn2.iconfinder.com/data/icons/designer-skills/128/code-programming-javascript-software-develop-command-language-256.png">   
 
 ## Índice
@@ -54,15 +56,14 @@ Usuário 3: Adulto, 32 anos, sexo feminino:
 
 **Baixa fidelidade**
 
-<img alt="Prototipo Baixa" height="80" src=./src/img/readme/)/>
+![Prototipo Baixa](./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0001.jpg)
 
 **Alta fidelidade**
-
-<img alt="Prototipo Alta" height="80" src=./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0001.jpg)/>
-<img alt="Prototipo Alta" height="80" src=./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0002.jpg)/>
-<img alt="Prototipo Alta" height="80" src=./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0003.jpg)/>
-<img alt="Prototipo Alta" height="80" src=./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0004.jpg)/>
-<img alt="Prototipo Alta" height="80" src=./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0005.jpg)/>
+![Prototipo](./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0001.jpg)
+![Prototipo](./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0002.jpg)
+![Prototipo](./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0003.jpg)
+![Prototipo](./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0004.jpg)
+![Prototipo](./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0005.jpg)
 
 ### Objetivos de aprendizagem
 
