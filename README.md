@@ -35,11 +35,9 @@ A página permita que o usuário filtre, ordene e busque informações.
 
 Perfis dos usuários e observações:
 
-Usuario 1: Adulto, 22 anos, sexo feminino: .
+Usuario 1: Adulto, 29 anos, sexo maculino, ensino superior completo, engenheiro de produção. Observações: Acessado por celular, observou que alguns cards estavam com espaçamentos maiores que outros por conta do tamanho do conteúdo. Sugeriu que na página de entrada a área que o personagem aparece seja arredondada.
 
-Usuario 2 : Criança, .
-
-Usuário 3: Adulto, 32 anos, sexo feminino:
+Usuario 2: Adulto, 32 anos, sexo feminino, ensino superior completo, produtora cultural audiovisual.
 
 ## Testes de Usabilidade
 
@@ -56,7 +54,8 @@ Usuário 3: Adulto, 32 anos, sexo feminino:
 
 **Baixa fidelidade**
 
-![Prototipo Baixa](./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0001.jpg)
+![Prototipo Baixa](./src/img/readme/prototibo_baixa-01.jpg)
+![Prototipo Baixa](./src/img/readme/prototibo_baixa-02.jpg)
 
 **Alta fidelidade**
 ![Prototipo](./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0001.jpg)
