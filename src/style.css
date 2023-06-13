@@ -26,7 +26,8 @@ body {
 
 #home {
   width: 100%;
-	min-height: 100%;
+	min-height: 90vh;
+  padding: 5px;
   background-attachment: fixed;
   background-size: cover;
   background-color: #1ba0d0;
@@ -34,12 +35,20 @@ body {
   flex-direction: column;
   align-items: center;
 	color: #ffffff;
+  border-radius: 2rem;
 }
 
 #home img {
   max-width: 250px;
   height: auto;
   align-items: center;
+}
+
+#home:hover img {
+  max-width: 300px;
+  height: auto;
+  align-items: center;
+  text-shadow: 2px 2px #0b6a8d;
 }
 
 /* FOOTER */
@@ -102,14 +111,6 @@ footer a {
 #content {
   padding: 3rem;
   text-align: center;
-}
-
-.content-home {
-  display: none;
-}
-
-.show-home {
-  display: block;
 }
 
 
@@ -288,6 +289,11 @@ body, html, ul {
   }
 }
 
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+}
 
 /* CARDS */
 .container {
@@ -388,7 +394,7 @@ h1, h2, h3 {
 }
 
 .btn:hover {
-  background: rgba(36, 149, 241, 0.579);
+  background: #0095ffc1;
   color: #ffffff;
   font-style: italic;
 }

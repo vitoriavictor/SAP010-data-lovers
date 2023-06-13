@@ -33,23 +33,53 @@
   <main id="main">
     <div class="container">
       <div id="filters">
+          <!-- Busca por título do filme -->
         <section id="searchFilm">
-          <label for="search" data-filter="films" id="search-label">Pesquise o nome do filme:</label>
-          <input type="text" id="search">
+          <label for="search" data-filter="films" id="search-label"> Pesquise o nome do filme: </label>
+          <input type="text" id="search" placeholder="Busque o Título em inglês...">
           <button class="btn" id="searchButton">Buscar</button>
         </section>
+        <h4 class="order"><span data-tooltip="Selecione a opção de ordenação dos cards"> Opções de Ordenação dos Filmes: </span></h4>
+        <section id="a-z">
+          <!-- Ordenação de A-Z -->
+          <h4> Alfabética: </h4>
+          <label for="sortAZButton" id="sort-az-label"> A-Z </label>
+          <input type="radio" name="sort" id="sortAZButton">
+          <!-- Ordenação de Z-A -->
+          <label for="sortZAButton" id="sort-za-label"> Z-A </label>
+          <input type="radio" name="sort" id="sortZAButton">
+        </section>
+        <section id="ano">
+          <h4> Ano de Lançamento: </h4>
+          <!-- Ordenação por ano de lançamento -->
+          <label for="sortReleaseYearButtonOld" id="sortRYlabelO"> Mais antigos </label>
+          <input type="radio" name="sort" id="sortReleaseYearButtonOld">
+          <!-- Ordenação por ano de lançamento -->
+          <label for="sortReleaseYearButtonNew" id="sortRYlabelN"> Mais novos </label>
+          <input type="radio" name="sort" id="sortReleaseYearButtonNew">
+        </section>
+        <section id="nota">
+          <h4> Nota no Rotten Tomatoes: </h4>
+          <!-- Ordenação por nota do Rotten Tomatoes -->
+          <label for="sortRottenTomatoesButtonHigh" id="sortRTlabelH"> Maior Nota </label>
+          <input type="radio" name="sort" id="sortRottenTomatoesButtonHigh">
+          <!-- Ordenação por nota do Rotten Tomatoes -->
+          <label for="sortRottenTomatoesButtonLow" id="sortRTlabelL"> Menor Nota </label>
+          <input type="radio" name="sort" id="sortRottenTomatoesButtonLow">
+        </section>
+        <h4 class="order"><span data-tooltip="Selecione uma opção de filtro para exibição dos cards"> Filtros programados: </span></h4>
+
         <!-- Filtro de diretor -->
         <section id="filmDirectorCharac">
-          <label for="director-filter" data-filter="director" id="director-label">Diretor:</label>
+          <label for="director-filter" data-filter="director" id="director-label">Filtre os Filmes por Diretor:</label>
           <select id="director-filter"></select>
           <div id="percentageResult"></div>
         <!-- Filtro de filme -->
-          <label for="movieFilter" data-filter="movie" id="movie-label">Personagens por Filme:</label>
+          <label for="movieFilter" data-filter="movie" id="movie-label">Filtre os Personagens por Filme:</label>
           <select id="movieFilter"></select>
-        </section>
+          <div id=""></div>
         <!-- Filtro de gênero -->
-        <section id="genderCharac">
-          <label for="genderFilter" data-filter="gender" id="gender-filter">Gênero:</label>
+          <label for="genderFilter" data-filter="gender" id="gender-filter">Filtre os Personagens por Gênero:</label>
           <select id="genderFilter">
             <option value="all">Todos</option>
             <option value="male">Masculino</option>
@@ -58,52 +88,15 @@
             <option value="Unknown (Possible Male)">Unknown (Possible Male)</option>  
           </select>
         </section>
-        <section id="a-z">
-          <h4>Ordenação dos filmes</h4>
-          <!-- Ordenação de A-Z -->
-          <label for="sortAZButton" id="sort-az-label">A-Z</label>
-          <input type="radio" name="sort" id="sortAZButton">
-          <!-- Ordenação de Z-A -->
-          <label for="sortZAButton" id="sort-za-label">Z-A</label>
-          <input type="radio" name="sort" id="sortZAButton">
-        </section>
-        <section id="ano">
-          <h4>Ordenação dos filmes por Ano de Lançamento</h4>
-          <!-- Ordenação por ano de lançamento -->
-          <label for="sortReleaseYearButtonOld" id="sortRYlabelO">Mais antigos</label>
-          <input type="radio" name="sort" id="sortReleaseYearButtonOld">
-
-          <!-- falta incluir -->
-          <label for="sortReleaseYearButtonNew" id="sortRYlabelN">Mais novos</label>
-          <input type="radio" name="sort" id="sortReleaseYearButtonNew">
-        </section>
-
-        <section id="nota">
-          <h4>Ordenação dos filmes por nota no Rotten Tomatoes</h4>
-          <!-- Ordenação por nota do Rotten Tomatoes -->
-          <label for="sortRottenTomatoesButtonHigh" id="sortRTlabelH">Maior Nota</label>
-          <input type="radio" name="sort" id="sortRottenTomatoesButtonHigh">
-          <!-- falta incluir -->
-          <label for="sortRottenTomatoesButtonLow" id="sortRTlabelL">Menor Nota</label>
-          <input type="radio" name="sort" id="sortRottenTomatoesButtonLow">
-        </section>
-
-       <!-- Calcular estatísticas -->
-        <!-- <section id="statistics">
-          <label for="" id="">Percentual de personagens femininas/masculinas:</label>
-          <div id="resultContainer"></div>
-          <button id="calculateStatsButton">Calcular Estatísticas</button> 
-        </section> --> 
-        <!-- Limpar filtros  -->
         <section id="clean">
           <button class="btn" id="cleanFilters">Limpar Filtros</button>
         </section>
-<!--         <div id="cards-container"></div> -->
       </div>
     </div>
   </main>
   <div id="search-empty"></div>
   <div id="cards-container"></div>
+  <button class="btn" id="back-to-top" href="">▲ Topo</button>
   <footer>
     <h2>Projeto Data-Lovers</h2>
     <a class="footerLink" href="https://www.laboratoria.la/br"><h3>Bootcamp Laboratória</h3></a>
