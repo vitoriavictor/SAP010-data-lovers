@@ -99,7 +99,15 @@ h1, h2, h3 {
 
 /* SECTIONS FILTROS */
 
-#a-z, #ano, #nota, #statistics, #genderCharac, #filmDirectorCharac, #searchFilm {
+#a-z, #ano, #nota{
+  border: #1ba0d0 solid;
+  color: #ffffff;
+  padding: 12px 10px 10px 20px;
+  display: block;
+  align-items: center;
+}
+
+#genderCharac, #filmDirectorCharac, #searchFilm {
   border: #1ba0d0 solid;
   color: #ffffff;
   padding: 1rem;
@@ -111,11 +119,24 @@ h1, h2, h3 {
   text-align: center;
 }
 
+::placeholder{
+  font-style: italic;
+  font-size:x-small;
+  color: #8cd5ef;
+}
+
 #search, #director-filter, #genderFilter, #movieFilter, #sortAZButton{
   border: #1ba0d0 solid;
   color: #1ba0d0;
   border-radius: 1rem;
   padding: 5px;
+  margin: 5px;
+}
+.order{
+  color: #ffffff;
+  padding: 5px;
+  margin: 5px;
+/*   text-align:center; */
 }
 
 #percentageResult{
@@ -123,4 +144,27 @@ h1, h2, h3 {
   font-weight: bolder;
   margin: 10px;
   text-shadow: 2px 1px #0b6a8d;
+}
+
+[data-tooltip] {
+  position: relative;
+  font-weight: bold;
+}
+
+[data-tooltip]:after {
+  display: none;
+  position: absolute;
+  top: -5px;
+  padding: 5px;
+  border-radius: 3px;
+  left: calc(100% + 2px);
+  content: attr(data-tooltip);
+  white-space: nowrap;
+  background-color: #0095ffc1;
+  color: White;
+  font-style: italic;
+}
+
+[data-tooltip]:hover:after {
+  display: block;
 }
