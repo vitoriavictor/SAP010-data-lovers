@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     showMovies(filteredMovies);
     statsContainer.textContent = percentage;
   });
-
+  
   function showMovies(movies) {
     const moviesContainer = document.getElementById('cards-container');
     moviesContainer.innerHTML = '';

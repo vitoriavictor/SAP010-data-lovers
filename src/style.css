@@ -289,6 +289,11 @@ body, html, ul {
   }
 }
 
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+}
 
 /* CARDS */
 .container {
@@ -389,7 +394,7 @@ h1, h2, h3 {
 }
 
 .btn:hover {
-  background: rgba(36, 149, 241, 0.579);
+  background: #0095ffc1;
   color: #ffffff;
   font-style: italic;
 }

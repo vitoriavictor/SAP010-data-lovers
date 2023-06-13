@@ -1,9 +1,9 @@
-# Data Lovers
+# Data Lovers 
 
 ## 
 **Acesse o projeto:**
 
-[<img alt="WEBSITE" height="50" src="https://cdn4.iconfinder.com/data/icons/movies-1-flat/60/042_-_totoro-1024.png">](https://github.com/Marinacb7/SAP010-data-lovers)
+[<img alt="WEBSITE" height="50" src="https://cdn4.iconfinder.com/data/icons/movies-1-flat/60/042_-_totoro-1024.png">](https://marinacb7.github.io/SAP010-data-lovers)
 
 **Tecnologias utilizadas**
 
@@ -35,19 +35,17 @@ A página permita que o usuário filtre, ordene e busque informações.
 
 Perfis dos usuários e observações:
 
-Usuario 1: Adulto, 29 anos, sexo maculino, ensino superior completo, engenheiro de produção. Observações: Acessado por celular, observou que alguns cards estavam com espaçamentos maiores que outros por conta do tamanho do conteúdo. Sugeriu que na página de entrada a área que o personagem aparece seja arredondada.
+Usuario 1: Adulto, 29 anos, sexo maculino, ensino superior completo, engenheiro de produção. Observações: não conhecia o conteúdo do site.
 
-Usuario 2: Adulto, 32 anos, sexo feminino, ensino superior completo, produtora cultural audiovisual.
+Usuario 2: Adulto, 32 anos, sexo feminino, ensino superior completo, produtora cultural audiovisual. Observações: estava familiarizada com o conteúdo do site e costuma frequentar sites de cinema e produções de TV.
 
 ## Testes de Usabilidade
 
-Perfis dos usuários e observações:
+Comentários sobre o conteúdo, diagramação e funcionalidades:
 
-Usuario 1: Adulto, 22 anos, sexo feminino: .
+Usuario 1: Acessado por celular, observou que alguns cards estavam com espaçamentos maiores que outros por conta do tamanho do conteúdo. Sugeriu que na página de entrada a área que o personagem aparece seja arredondada. Teve acesso facilmente a informação sem problemas no uso.
 
-Usuario 2 : Criança, .
-
-Usuário 3: Adulto, 32 anos, sexo feminino:
+Usuario 2 : Acessado por celular e navegador. Observou o espaçamento entre os cards dos filtros dos filmes, sugeriu que ficasse como os dos personagens com menos conteúdo. Observou a necessidade de um botão para voltar ao topo que acompanhasse o scroll da tela no celular. Apreciou a uniformidade das cores e formatos. Achou bem explicativo o uso dos filtros, mas sugeriu um comentário de como usar os filtros para leigos.
 
 
 ### Protótipos 
@@ -83,7 +81,7 @@ Usuário 3: Adulto, 32 anos, sexo feminino:
 
 ## Considerações gerais
 
-* A excecução deste projeto 
+* Na excecução deste projeto utilizamos uma base de dados de um arquivo .json, priorizando a boa usabilidade para usuários familiarizados ou não com o tema. Aplicamos as funcionalizades do JavaScript para filtrar e exibir informações. Buscamos ajustar o html e css da melhor maneira para manter uma harmonia no estilo da página. Os testes executados foram bem sucedidos e finalizamos a entrega.
 
 ** Projeto entregue através do GitHub
   [Projeto Data Lovers](https://pages.github.com/)
