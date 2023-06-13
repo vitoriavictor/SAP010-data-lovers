@@ -12,10 +12,10 @@
 ## Índice
 
 * [Resumo do projeto](#resumo-do-projeto)
+* [Protótipos](#protótipos)
 * [Histórias de usuário](#histórias-de-usuário)
 * [Testes de Usabilidade](#testes-de-usabilidade)
-* [Protótipos](#protótipos)
-* [Objetivos de aprendizagem](#objetivos-de-aprendizagem)
+* [Objetivos de aprendizagem alcançados](#objetivos-de-aprendizagem-alcançados)
 * [Considerações gerais](#considerações-gerais)
 * [Dupla desenvolvedora](#dupla-desenvolvedora)
 
@@ -31,24 +31,8 @@ A página permita que o usuário filtre, ordene e busque informações.
   Lista de animações e personagens do [Studio Ghibli](https://ghiblicollection.com/).
   - [Pesquisa com seguidores de Studio Ghibli](src/data/ghibli/README.pt-BR.md)
 
-## Histórias de usuário
 
-Perfis dos usuários e observações:
-
-Usuario 1: Adulto, 29 anos, sexo maculino, ensino superior completo, engenheiro de produção. Observações: não conhecia o conteúdo do site.
-
-Usuario 2: Adulto, 32 anos, sexo feminino, ensino superior completo, produtora cultural audiovisual. Observações: estava familiarizada com o conteúdo do site e costuma frequentar sites de cinema e produções de TV.
-
-## Testes de Usabilidade
-
-Comentários sobre o conteúdo, diagramação e funcionalidades:
-
-Usuario 1: Acessado por celular, observou que alguns cards estavam com espaçamentos maiores que outros por conta do tamanho do conteúdo. Sugeriu que na página de entrada a área que o personagem aparece seja arredondada. Teve acesso facilmente a informação sem problemas no uso.
-
-Usuario 2 : Acessado por celular e navegador. Observou o espaçamento entre os cards dos filtros dos filmes, sugeriu que ficasse como os dos personagens com menos conteúdo. Observou a necessidade de um botão para voltar ao topo que acompanhasse o scroll da tela no celular. Apreciou a uniformidade das cores e formatos. Achou bem explicativo o uso dos filtros, mas sugeriu um comentário de como usar os filtros para leigos.
-
-
-### Protótipos 
+## Protótipos 
 
 **Baixa fidelidade**
 
@@ -62,7 +46,30 @@ Usuario 2 : Acessado por celular e navegador. Observou o espaçamento entre os c
 ![Prototipo](./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0004.jpg)
 ![Prototipo](./src/img/readme/Prototipo%20Site%20Data%20Lovers_page-0005.jpg)
 
-### Objetivos de aprendizagem
+## Histórias de usuário
+
+Perfis dos usuários e observações:
+
+Usuario 1: Adulto, 29 anos, sexo maculino, ensino superior completo, engenheiro de produção. Observações: não conhecia o conteúdo do site.
+
+*Apenas como fonte de primeiras informações sobre filmes de animação japoneses, o site exibe um pouco sobre a história do estúdio e seus diretores. Também me disponibiliza ver todos os filmes produzidos e buscar apenas de um diretor específico, possibilitando assim que eu finalize minha navegação.* 
+
+
+Usuario 2: Adulto, 32 anos, sexo feminino, ensino superior completo, produtora cultural audiovisual. Observações: estava familiarizada com o conteúdo do site e costuma frequentar sites de cinema e produções de TV.
+
+*Como uma pessoa interessada em filmes, e tendo conhecimento na área, busca um site onde consiga encontrar informações específicas de cada filme do estúdio. Além da introdução sobre a origem do estúdio e dos diretores, preciso ver todos os filmes de determinado diretor. Ao buscar o nome de um filme, é importante que eu consiga ver informações da produção tirando assim minhas dúvidas sobre o tema.*
+
+## Testes de Usabilidade
+
+Comentários sobre o conteúdo, diagramação e funcionalidades:
+
+Usuario 1: Acessado por celular, observou que alguns cards estavam com espaçamentos maiores que outros por conta do tamanho do conteúdo. Sugeriu que na página de entrada a área que o personagem aparece seja arredondada. Teve acesso facilmente a informação sem problemas no uso.
+
+Usuario 2 : Acessado por celular e navegador. Observou o espaçamento entre os cards dos filtros dos filmes, sugeriu que ficasse como os dos personagens com menos conteúdo. Observou a necessidade de um botão para voltar ao topo que acompanhasse o scroll da tela no celular. Apreciou a uniformidade das cores e formatos. Achou bem explicativo o uso dos filtros, mas sugeriu um comentário de como usar os filtros para leigos.
+
+
+
+## Objetivos de aprendizagem alcançados
 
 - Uso de HTML semântico
 - Uso de seletores de CSS
@@ -81,7 +88,7 @@ Usuario 2 : Acessado por celular e navegador. Observou o espaçamento entre os c
 
 ## Considerações gerais
 
-* Na excecução deste projeto utilizamos uma base de dados de um arquivo .json, priorizando a boa usabilidade para usuários familiarizados ou não com o tema. Aplicamos as funcionalizades do JavaScript para filtrar e exibir informações. Buscamos ajustar o html e css da melhor maneira para manter uma harmonia no estilo da página. Os testes executados foram bem sucedidos e finalizamos a entrega.
+* Na excecução deste projeto utilizamos uma base de dados de um arquivo .json, priorizando a boa usabilidade para usuários familiarizados ou não com o tema, cumprindo as necessidades de suas histórias. Aplicamos as funcionalizades do JavaScript para filtrar e exibir informações. Buscamos ajustar o html e css da melhor maneira para manter uma harmonia no estilo da página. Os testes executados foram bem sucedidos e finalizamos a entrega.
 
 ** Projeto entregue através do GitHub
   [Projeto Data Lovers](https://pages.github.com/)

@@ -16,10 +16,14 @@ function createMovieCard(films) {
   
   const releaseDate = document.createElement("p");
   releaseDate.textContent = "Ano de lançamento: " + films.release_date;
+
+  const viewMore = document.createElement("a");
+  viewMore.textContent = "Veja mais ➤";
   
   front.appendChild(image);
   front.appendChild(title);
   front.appendChild(releaseDate);
+  front.appendChild(viewMore);
   
   const back = document.createElement("div");
   back.classList.add("back");

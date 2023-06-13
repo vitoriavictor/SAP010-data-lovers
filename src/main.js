@@ -1,6 +1,6 @@
 import { data } from "./data.js";
 import { filterItemsBySearchTerm, filterByDirector, calculatePercentage, filterByGender, filterCharactersByMovie, sortByTitleAZ, sortByTitleZA, sortByReleaseYearOld, sortByReleaseYearNew, sortByRottenTomatoesHigh, sortByRottenTomatoesLow } from './data.js';
-import { movies } from './data.js'; 
+import { movies } from './data.js';
 
 // FILTROS
 document.addEventListener('DOMContentLoaded', function () {
@@ -12,14 +12,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const filteredMovies = filterItemsBySearchTerm(movies, searchTerm);
     showMovies(filteredMovies);
   });
-  
+
   function showMovies(movies) {
     const moviesContainer = document.getElementById('cards-container');
     const searchMessage = document.getElementById('search-empty');
-  
+
     moviesContainer.innerHTML = '';
     searchMessage.innerHTML = '';
-  
+
     if (movies.length === 0) {
       searchMessage.textContent = 'Nenhum filme encontrado.';
       return;
@@ -29,18 +29,20 @@ document.addEventListener('DOMContentLoaded', function () {
       moviesContainer.appendChild(movieCard);
     });
   }
-
+  //BUSCA
   function createMovieCard(movie) {
     const card = document.createElement('div');
     card.classList.add('movie-card');
 
     const front = document.createElement('div');
-    front.classList.add('card-front');
+    front.classList.add('card-all');
     front.innerHTML = `
     <img src="${movie.poster}" alt="${movie.title}" />
     <h3>${movie.title}</h3>
     <h4>Ano de Lançamento: ${movie.release_date}</h4>
-    <h4>${movie.description}</h4>
+    <br>
+    <h4>Sinopse: ${movie.description}</h4>
+    <br>
     <h4>Diretor: ${movie.director}</h4>
     <h4>Nota no Rotten Tomatoes: ${movie.rt_score}%</h4>
   `;
@@ -86,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     showMovies(filteredMovies);
     statsContainer.textContent = percentage;
   });
-  
+
   function showMovies(movies) {
     const moviesContainer = document.getElementById('cards-container');
     moviesContainer.innerHTML = '';
@@ -98,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function createMovieCard(movie) {
     const card = document.createElement('div');
-    card.classList.add('movie-card');
+    card.classList.add('card');
 
     const front = document.createElement('div');
     front.classList.add('card-front');
@@ -106,13 +108,25 @@ document.addEventListener('DOMContentLoaded', function () {
       <img src="${movie.poster}" alt="${movie.title}" />
       <h3>${movie.title}</h3>
       <h4>Ano de Lançamento: ${movie.release_date}</h4>
-      <h4>${movie.description}</h4>
       <h4>Diretor: ${movie.director}</h4>
       <h4>Nota no Rotten Tomatoes: ${movie.rt_score}%</h4>
     `;
 
-    card.appendChild(front);
+    const viewMore = document.createElement("a");
+    viewMore.textContent = "Veja mais ➤";
 
+    const back = document.createElement('div');
+    back.classList.add('card-back');
+    back.innerHTML = `<h4>Sinopse: ${movie.description}</h4>`;
+
+    card.appendChild(front);
+    card.appendChild(back)
+    card.appendChild(front);
+    front.appendChild(viewMore);
+
+    card.addEventListener("click", function () {
+      card.classList.toggle("flipped");
+    });
     return card;
   }
 
@@ -161,7 +175,7 @@ window.onload = function () {
     const filteredCharacter = filterCharactersByMovie(movies, selectedMovie);
     showCharacter(filteredCharacter);
   });
-  
+
   genderFilter.addEventListener('change', function () {
     const selectedGender = genderFilter.value;
     const filteredMovies = filterByGender(movies, selectedGender);
@@ -216,7 +230,7 @@ window.onload = function () {
 
   function createMovieCard(movie) {
     const card = document.createElement('div');
-    card.classList.add('movie-card');
+    card.classList.add('card');
 
     const front = document.createElement('div');
     front.classList.add('card-front');
@@ -224,13 +238,25 @@ window.onload = function () {
       <img src="${movie.poster}" alt="${movie.title}" />
       <h3>${movie.title}</h3>
       <h4>Ano de Lançamento: ${movie.release_date}</h4>
-      <h4>${movie.description}</h4>
       <h4>Diretor: ${movie.director}</h4>
       <h4>Nota no Rotten Tomatoes: ${movie.rt_score}%</h4>
     `;
 
-    card.appendChild(front);
+    const viewMore = document.createElement("a");
+    viewMore.textContent = "Veja mais ➤";
 
+    const back = document.createElement('div');
+    back.classList.add('card-back');
+    back.innerHTML = `<h4>Sinopse: ${movie.description}</h4>`;
+
+    card.appendChild(front);
+    card.appendChild(back)
+    card.appendChild(front);
+    front.appendChild(viewMore);
+
+    card.addEventListener("click", function () {
+      card.classList.toggle("flipped");
+    });
     return card;
   }
 

@@ -6,10 +6,13 @@
   padding: 0;
 }
 
+html{
+  overflow-x: hidden;
+}
+
 body {
 	position: relative;
   height: 100vh;
-  overflow: auto;
 }
 .background-image {
   position: fixed;
@@ -53,15 +56,26 @@ body {
 
 /* FOOTER */
 footer {
-  position: relative;
+/*   position: relative; */
   bottom: 0;
   left: 0;
-  width: 100%;
+/*   width: 100%; */
   background-color: #1ba0d0;
   text-align: center;
   font-size: 1rem;
   color: #ffffff;
   padding: 20px;
+}
+
+#header {
+  box-sizing: border-box;
+  height: 70px;
+  padding: 2rem;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+	color: #ffffff;
 }
 
 footer h2 {
@@ -143,6 +157,7 @@ body, html, ul {
   box-sizing: border-box;
   height: 70px;
   padding: 2rem;
+  margin-top: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -292,7 +307,7 @@ body, html, ul {
 #back-to-top {
   position: fixed;
   bottom: 30px;
-  right: 20px;
+  right: 35px;
 }
 
 /* CARDS */
@@ -311,8 +326,8 @@ h1, h2, h3 {
 }
 
 .card {
-	width: 280px;
-	min-height: 600px;
+	width: 300px;
+	min-height: 610px;
   perspective: 1000px;
 	margin: 15px;
 	border-radius: 5px;
@@ -320,6 +335,10 @@ h1, h2, h3 {
 	flex-direction: column;
 	text-align: center;
 	align-items: center;
+}
+
+.front:hover {
+  box-shadow: 4px 4px #0b6a8d;
 }
 
 .front, .back {
@@ -374,6 +393,12 @@ h1, h2, h3 {
   margin: 5px 0;
 }
 
+.card a{
+  color: #8cd5ef;
+  font-size: smaller;
+  font-style: oblique;
+}
+
 @media (max-width: 500px) {
   .card {
     width: 90%;
@@ -404,6 +429,7 @@ h1, h2, h3 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 15px;
 }
 
 #hmiyazaki, #takahata, #kondo, #gmiyazaki, #morita, #yonebayashi {
@@ -436,6 +462,7 @@ h1, h2, h3 {
     flex: 0 0 calc(25% - 2rem);
     max-width: calc(25% - 2rem);
 		margin: 2rem;
+    padding: 20px;
   }
 }
 
@@ -463,8 +490,8 @@ h1, h2, h3 {
   text-align: center;
 } 
 
-#recomend{
-  background-color: #1ba0d0df;
+.recomend{
+/*   background-color: #1ba0d0df; */
 	padding: 2rem;
 	color: #ffffff;
   display: flex;
