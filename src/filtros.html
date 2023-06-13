@@ -39,7 +39,7 @@
           <input type="text" id="search" placeholder="Busque o Título em inglês...">
           <button class="btn" id="searchButton">Buscar</button>
         </section>
-        <h4 class="order"><span data-tooltip="Selecione a opção de ordenação dos cards"> Opções de Ordenação dos Filmes: </span></h4>
+        <h4 class="order">Opções de Ordenação dos Filmes: </h4>
         <section id="a-z">
           <!-- Ordenação de A-Z -->
           <h4> Alfabética: </h4>
@@ -67,7 +67,7 @@
           <label for="sortRottenTomatoesButtonLow" id="sortRTlabelL"> Menor Nota </label>
           <input type="radio" name="sort" id="sortRottenTomatoesButtonLow">
         </section>
-        <h4 class="order"><span data-tooltip="Selecione uma opção de filtro para exibição dos cards"> Filtros programados: </span></h4>
+        <h4 class="order"> Filtros específicos: </h4>
 
         <!-- Filtro de diretor -->
         <section id="filmDirectorCharac">
@@ -95,7 +95,12 @@
     </div>
   </main>
   <div id="search-empty"></div>
-  <div id="cards-container"></div>
+<!--   <div id="cards-container"></div> -->
+        <div class="flipper">
+        <div id="films-container" class="films-container"></div>
+        <div id="card"></div>
+        <div id="cards-container"></div>
+      </div>
   <button class="btn" id="back-to-top">▲ Topo</button>
   <footer>
     <h2>Projeto Data-Lovers</h2>
