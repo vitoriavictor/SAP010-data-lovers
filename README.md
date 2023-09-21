@@ -3,7 +3,7 @@
 ## 
 **Acesse o projeto:**
 
-[<img alt="WEBSITE" height="50" src="https://cdn4.iconfinder.com/data/icons/movies-1-flat/60/042_-_totoro-1024.png">](https://marinacb7.github.io/SAP010-data-lovers)
+[<img alt="WEBSITE" height="50" src="https://cdn4.iconfinder.com/data/icons/movies-1-flat/60/042_-_totoro-1024.png">](https://vitoriavictor.github.io/SAP010-data-lovers/)
 
 **Tecnologias utilizadas**
 
